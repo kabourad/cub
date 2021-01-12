@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/11 18:57:23 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/12 18:42:12 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 # include "../libft/libft.h"
 # include <fcntl.h>
-# include "mlx.h"
+// # include "mlx.h"
 
 /*
 ** structures
@@ -70,6 +70,7 @@ typedef struct 	s_player
 typedef struct		s_mapll
 {
 	char			*line;
+	int				i;
 	struct s_mapll	*next;
 }					t_mapll;
 
@@ -103,6 +104,36 @@ int     ft_arrlen(char **arr);
 void    ft_arrdel(char ***arr);
 int		ft_strcmp(const char *s1, const char *s2);
 void	put_and_quit(char *msg);
+
+//fills.c
+
+t_bi	resolution_fill(char **array);
+t_col	color_fill(char *str);
+char	*path_fill(char *str);
+
+//game_init.c
+
+t_parse	game_init(char *path);
+
+//id_extra.c
+
+int		is_id(char *c, int ids);
+
+//id_parse.c
+
+void	id_fill(int fd, t_parse *stru);
+
+//map_check
+
+void	space_check(t_mapll *tmp, char *line, int i);
+int		is_valid(char c);
+void	twod_check(t_mapll *tmp, char *line, int i, t_parse *stru);
+void	check_last_line(t_mapll *ptr);
+
+void	map_fill(int fd, t_parse *stru);
+
+//split whitespaces
+char	**ft_split_whitespaces(char const *s);
 
 //main.c
 

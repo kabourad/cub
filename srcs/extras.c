@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extras.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 00:02:46 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/11 18:36:18 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/11 22:15:13 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		ft_strcmp(const char *s1, const char *s2)
 
 void	put_and_quit(char *msg)
 {
+	ft_putendl_fd("ERROR", 2);
 	ft_putendl_fd(msg, 2);
-        exit(1);
+	exit(1);
 }

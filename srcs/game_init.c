@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 18:47:44 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/11 19:20:24 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/12 01:13:46 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@ static t_parse	stru_init(void)
 	return (stru);
 }
 
-t_parse     	game_init(char *path)
+t_parse			game_init(char *path)
 {
     int			fd;
 	t_parse		ret;
 
 	ret = stru_init();
     if ((fd = open(path, O_RDONLY)) == -1) 
-		put_and_quit("Error\nopening file");
+		put_and_quit("Opening file failed.");
 	id_fill(fd, &ret);
 	map_fill(fd, &ret);
+	return (ret);
 }

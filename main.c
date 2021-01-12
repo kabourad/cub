@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:04:43 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/11 18:47:05 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/12 18:25:44 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ void		ft_extention(char *path, char *ext)
 int			main(int argc, char ** argv)
 {
 	t_parse	    game;
+	t_ingame	prog;
 
 	if (argc < 2 || argc > 3)
 		return (ft_usage());
 	ft_extention(argv[1], ".cub");
 	game = game_init(argv[1]);
+	prog = player_spawn(game);
+	return(0);
 }

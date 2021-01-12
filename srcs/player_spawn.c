@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   player_spawn.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 21:00:06 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 01:33:36 by kabourad         ###   ########.fr       */
+/*   Created: 2021/01/12 18:23:47 by kabourad          #+#    #+#             */
+/*   Updated: 2021/01/12 18:56:24 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../headers/cub3d.h"
 
-char	*ft_strndup(const char *src, int n)
+int			linked_list_len(t_mapll *map)
 {
-	char	*ret;
-	int		i;
+	t_mapll		*tmp;
+	int			i;
 
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
-	if (!ret)
-		return (NULL);
 	i = 0;
-	while (src[i] && i < n)
+	while (tmp)
 	{
-		ret[i] = src[i];
 		i++;
+		tmp = tmp->next;
 	}
-	ret[i] = '\0';
+	return (i);
+}
+
+t_ingame	player_spawn(t_parse game)
+{
+	t_ingame	ret;
+	t_mapll		*tmp;
+	int			i;
+
+	ret.player = game.player;
+	i = linked_list_len(game.map) + 1;
+	ret.map = (char**)malloc(sizeof(char*) * i);
+	ret.map[i - 1] = NULL;
+	tmp = game.map;
+	i = 0;
+	while (tmp)
+		ret.map[i++] = ft_strdup(tmp->line);
 	return (ret);
 }

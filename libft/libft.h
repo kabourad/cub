@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 23:29:30 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/11 18:24:44 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/12 01:34:37 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,6 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 void 				(*del)(void *));
 int					get_next_line(int fd, char **line);
-char				*ft_strchr(const char *str, char c);
-char				*ft_strjoin(char const *s1, char const *s2);
-size_t				ft_strlen(const char *str);
-char				*ft_strdup(const char *src);
-char				*ft_strchr(const char *str, char c);
 char				*ft_strndup(const char *src, int n);
 
 #endif
