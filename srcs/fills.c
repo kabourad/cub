@@ -6,11 +6,11 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 22:49:51 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 00:23:32 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:47 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
 t_bi	resolution_fill(char **array)
 {

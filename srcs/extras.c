@@ -6,12 +6,12 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 00:02:46 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/11 22:15:13 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:51 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
 void	ft_strdel(char **as)
 {

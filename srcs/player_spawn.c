@@ -6,11 +6,11 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 18:23:47 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 18:56:24 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:24 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
 int			linked_list_len(t_mapll *map)
 {

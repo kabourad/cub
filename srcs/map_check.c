@@ -6,13 +6,13 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 18:49:19 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:16 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
-static t_player	fill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
+static t_player	ifill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
 {
 	t_player	ret;
 	

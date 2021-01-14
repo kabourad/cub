@@ -6,11 +6,11 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 16:18:27 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 01:31:03 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:43 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
 static int		is_ws(char c)
 {

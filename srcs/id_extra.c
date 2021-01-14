@@ -6,11 +6,11 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 21:46:23 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 16:47:09 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:36 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
 static int	map_line(char *line)
 {

@@ -6,11 +6,11 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:06:31 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 16:47:03 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:31 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
 static void	identifier_fill(int id, char **array, t_parse *stru)
 {

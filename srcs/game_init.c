@@ -6,11 +6,11 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 18:47:44 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 01:13:46 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:22:39 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub3d.h"
+#include "../headers/cub.h"
 
 static t_parse	stru_init(void)
 {

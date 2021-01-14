@@ -6,11 +6,11 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:04:43 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/12 18:25:44 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/14 17:23:17 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/cub3d.h"
+#include "headers/cub.h"
 
 static int		ft_usage(void)
 {
