@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   id_extra.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 21:46:23 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/14 17:22:36 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:55:51 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub.h"
+#include "../../headers/cub.h"
 
 static int	map_line(char *line)
 {
@@ -23,9 +23,9 @@ static int	map_line(char *line)
 				&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
 				&& line[i] != 'W')
 			return (1);
-        if (line[i] == 'W' && line[i + 1] == 'E')
+		if (line[i] == 'W' && line[i + 1] == 'E')
 			return (1);
-        if (line[i] == 'S' && !line[i + 1])
+		if (line[i] == 'S' && !line[i + 1])
 			return (1);
 		i++;
 	}

@@ -3,61 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/14 17:22:16 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:30:33 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub.h"
+#include "../../headers/cub.h"
 
-static t_player	ifill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
+static t_vec	fill_pos(int a, int b)
 {
-	t_player	ret;
-	
-	stru->ids |= PL_ID;
-	ret.pos.x = i;
-	ret.pos.y = tmp->i + 1;
-	if (line[i] == 'N')
-		ret.dir.y = -1;
-	else if (line[i] == 'S')
-		ret.dir.y = 1;
-	else if (line[i] == 'E')
-		ret.dir.x = 1;
-	else if (line[i] == 'W')
-		ret.dir.x = -1;
+	t_vec	ret;
+
+	ret.x = a;
+	ret.y = b;
+	return (ret);
 }
 
-void	space_check(t_mapll *tmp, char *line, int i)
+static t_player	fill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
+{
+	t_player	ret;
+
+	stru->ids |= PL_ID;
+	ret.pos = fill_pos(i, tmp->i + 1);
+	if (line[i] == 'N')
+	{
+		ret.pln.x = -0.6;
+		ret.dir.y = -1.0;
+	}
+	else if (line[i] == 'S')
+	{
+		ret.pln.x = 0.6;
+		ret.dir.y = 1.0;
+	}
+	else if (line[i] == 'E')
+	{
+		ret.pln.y = -0.6;
+		ret.dir.x = 1.0;
+	}
+	else if (line[i] == 'W')
+	{
+		ret.pln.y = 0.6;
+		ret.dir.x = -1.0;
+	}
+	return (ret);
+}
+
+void			space_check(t_mapll *tmp, char *line, int i)
 {
 	if ((tmp && tmp->line[i] != '1' && tmp->line[i] != ' ') ||
 			(line[i + 1] != '1' && line[i + 1] != ' '))
-		put_and_quit("Error\nInvalid map");
+		quit("Error\nInvalid map", NULL);
 }
 
-int		is_valid(char c)
-{
-	if (c == '0' || c == '2' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (1);
-	else
-		return (0);
-}
-
-void	twod_check(t_mapll *tmp, char *line, int i, t_parse *stru)
+void			twod_check(t_mapll *tmp, char *line, int i, t_parse *stru)
 {
 	if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
 			&& !(stru->ids & PL_ID))
 		stru->player = fill_player(stru, tmp, line, i);
-	else if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-			&& (stru->ids & PL_ID))
-		put_and_quit("It's a single player game verify map.");
+	else if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
+			|| line[i] == 'W') && (stru->ids & PL_ID))
+		quit("It's a single player game verify map.", NULL);
 	if ((tmp && tmp->line[i] != '1' && !is_valid(tmp->line[i])) ||
 			(line[i + 1] != '1' && !is_valid(line[i + 1])))
-		put_and_quit("Invalid map.");
+		quit("Invalid map.", NULL);
 }
 
-void	check_last_line(t_mapll *ptr)
+void			check_last_line(t_mapll *ptr)
 {
 	t_mapll	*tmp;
 	int		i;
@@ -70,7 +83,7 @@ void	check_last_line(t_mapll *ptr)
 	while (tmp->line[i])
 	{
 		if (tmp->line[i] != '1' && tmp->line[i] != ' ')
-			put_and_quit("Invalid map.");
+			quit("Invalid map.", NULL);
 		i++;
 	}
 }

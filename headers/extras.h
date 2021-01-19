@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   extras.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 16:38:29 by awali-al         ###   ########.fr       */
+/*   Created: 2021/01/17 18:47:57 by awali-al          #+#    #+#             */
+/*   Updated: 2021/01/19 16:38:09 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef EXTRAS_H
+# define EXTRAS_H
 
-/*
-** includes
-*/
-
-# include "../libft/libft.h"
-# include "extras.h"
-# include "parsing.h"
 # include "structures.h"
-# include <fcntl.h>
 
-// # include "mlx.h"
-
-void		ft_extention(char *path, char *ext);
+void		ft_strdel(char **as);
+int			ft_arrlen(char **arr);
+void		ft_arrdel(char ***arr);
+int			ft_strcmp(const char *s1, const char *s2);
+int			ft_listlen(t_mapll *map);
+char		**ft_split_whitespaces(char const *s);
+void		quit(char *msg, char *path);
 
 #endif

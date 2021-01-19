@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 16:38:29 by awali-al         ###   ########.fr       */
+/*   Created: 2021/01/11 18:47:44 by kabourad          #+#    #+#             */
+/*   Updated: 2021/01/19 16:35:39 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#include "../../headers/cub.h"
 
-/*
-** includes
-*/
+t_parse			parsing(char *path)
+{
+	int			fd;
+	t_parse		ret;
 
-# include "../libft/libft.h"
-# include "extras.h"
-# include "parsing.h"
-# include "structures.h"
-# include <fcntl.h>
-
-// # include "mlx.h"
-
-void		ft_extention(char *path, char *ext);
-
-#endif
+	ret = stru_init();
+	if ((fd = open(path, O_RDONLY)) == -1)
+		quit("Opening file failed.", NULL);
+	id_fill(fd, &ret);
+	map_fill(fd, &ret);
+	return (ret);
+}

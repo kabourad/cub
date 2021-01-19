@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_whitespaces.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 16:18:27 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/14 17:22:43 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/01/17 18:47:28 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub.h"
+#include "../../headers/cub.h"
 
 static int		is_ws(char c)
 {

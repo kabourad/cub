@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 16:38:29 by awali-al         ###   ########.fr       */
+/*   Created: 2021/01/17 18:52:27 by awali-al          #+#    #+#             */
+/*   Updated: 2021/01/17 18:58:55 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#include "../../headers/cub.h"
 
-/*
-** includes
-*/
-
-# include "../libft/libft.h"
-# include "extras.h"
-# include "parsing.h"
-# include "structures.h"
-# include <fcntl.h>
-
-// # include "mlx.h"
-
-void		ft_extention(char *path, char *ext);
-
-#endif
+void	ft_strdel(char **as)
+{
+	if (as)
+	{
+		free((void*)*as);
+		*as = NULL;
+	}
+}
