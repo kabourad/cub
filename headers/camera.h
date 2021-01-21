@@ -4,6 +4,6 @@
 #include "struct.h"
 #include "../mlx_mms/mlx.h"
 
-# define GRID_BLOCKSIZE 50
+# define G_BS 50
 
 #endif

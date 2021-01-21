@@ -2,16 +2,21 @@
 
 int		player_disp(t_vec pos, void *mlx, void *mlx_win)
 {
+	int		i;
+	int		j;
 
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE - 1, pos.y * GRID_BLOCKSIZE - 1, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE, pos.y * GRID_BLOCKSIZE - 1, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE + 1, pos.y * GRID_BLOCKSIZE - 1, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE - 1, pos.y * GRID_BLOCKSIZE, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE, pos.y * GRID_BLOCKSIZE, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE + 1, pos.y * GRID_BLOCKSIZE, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE - 1, pos.y * GRID_BLOCKSIZE + 1, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE, pos.y * GRID_BLOCKSIZE + 1, 0xFFFFFF);
-	mlx_pixel_put(mlx, mlx_win, pos.x * GRID_BLOCKSIZE + 1, pos.y * GRID_BLOCKSIZE + 1, 0xFFFFFF);
+	i = -PLAYER_SIZE;
+	while (i <= PLAYER_SIZE)
+	{
+		j = -PLAYER_SIZE;
+		while (j <= PLAYER_SIZE)
+		{
+			mlx_pixel_put(mlx, mlx_win, pos.x * G_BS + j, pos.y * G_BS + i,
+					0xFFFFFF);
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -23,14 +28,14 @@ int		draw_grid(t_parse game)
 	int		j;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, game.res.width, game.res.height, "Hello world!");
+	mlx_win = mlx_new_window(mlx, game.res.width, game.res.height, "Hi!");
 	i = 0;
 	while (i < game.res.height)
 	{
 		j = 0;
 		while (j < game.res.width)
 		{
-			if (!(i % GRID_BLOCKSIZE) || !(j % GRID_BLOCKSIZE))
+			if (!(i % G_BS) || !(j % G_BS))
 				mlx_pixel_put(mlx, mlx_win, j, i, 0x00FF0000);
 			j++;
 		}
