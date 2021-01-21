@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:04:43 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 16:23:47 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:25:41 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int			main(int argc, char ** argv)
 		return (ft_usage());
 	ft_extention(argv[1], ".cub");
 	game = parsing(argv[1]);
+	draw_grid(game);
 	return(0);
 }

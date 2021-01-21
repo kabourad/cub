@@ -6,13 +6,13 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 22:49:51 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 15:59:39 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:20:53 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub.h"
 
-t_res	resolution_fill(char **array)
+t_res	res_fill(char **array)
 {
 	t_res	ret;
 

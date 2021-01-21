@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:42:30 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/19 16:29:07 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:20:53 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 //fills.c
 
-t_res		resolution_fill(char **array);
+t_res		res_fill(char **array);
 t_col		color_fill(char *str);
 char		*path_fill(char *str);
 

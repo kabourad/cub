@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/19 16:42:38 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:20:53 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct		s_player
 typedef struct		s_parse
 {
 	int				ids;
-	t_res			resolution;
+	t_res			res;
 	t_path			paths;
 	t_col			floor;
 	t_col			ceiling;

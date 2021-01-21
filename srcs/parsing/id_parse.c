@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:06:31 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 16:36:41 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:20:53 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	identifier_fill(int id, char **array, t_parse *stru)
 {
 	if (id == R_ID)
-		stru->resolution = resolution_fill(array);
+		stru->res = res_fill(array);
 	else if (id == F_ID)
 		stru->floor = color_fill(array[1]);
 	else if (id == C_ID)
