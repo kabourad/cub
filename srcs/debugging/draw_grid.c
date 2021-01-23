@@ -12,12 +12,20 @@ int		player_disp(t_vec pos, void *mlx, void *mlx_win)
 		while (j <= PLAYER_SIZE)
 		{
 			mlx_pixel_put(mlx, mlx_win, pos.x * G_BS + j, pos.y * G_BS + i,
-					0xFFFFFF);
+					0x00FF0000);
 			j++;
 		}
 		i++;
 	}
 	return (0);
+}
+
+int		border(int i, int j)
+{
+	if (i % G_BS == G_BS / 2 || j % G_BS == G_BS / 2)
+		return (0);
+	else
+		return (1);
 }
 
 int		draw_grid(t_parse game)
@@ -35,8 +43,11 @@ int		draw_grid(t_parse game)
 		j = 0;
 		while (j < game.res.width)
 		{
-			if (!(i % G_BS) || !(j % G_BS))
-				mlx_pixel_put(mlx, mlx_win, j, i, 0x00FF0000);
+			printf("%c\n", game.map[i / G_BS][j / G_BS]);
+			if (border(i, j))
+				mlx_pixel_put(mlx, mlx_win, j, i, 0x444444);
+			if (border(i, j) && game.map[i / G_BS][j / G_BS] && game.map[i / G_BS][j / G_BS] == '1')
+				mlx_pixel_put(mlx, mlx_win, j, i, 0xFFFFFF);
 			j++;
 		}
 		i++;
