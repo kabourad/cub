@@ -1,6 +1,6 @@
 #include "../../headers/cub.h"
 
-int		player_disp(t_vec pos, void *mlx, void *mlx_win)
+int		player_disp(t_player player, t_milix milix)
 {
 	int		i;
 	int		j;
@@ -11,8 +11,11 @@ int		player_disp(t_vec pos, void *mlx, void *mlx_win)
 		j = -PLAYER_SIZE;
 		while (j <= PLAYER_SIZE)
 		{
-			mlx_pixel_put(mlx, mlx_win, pos.x * G_BS + j, pos.y * G_BS + i,
-					0x00FF0000);
+			mlx_pixel_put(milix.mlx, milix.mlx_win, player.pos.x * G_BS + j,
+					player.pos.y * G_BS + i, 0x00FF0000);
+			mlx_pixel_put(milix.mlx, milix.mlx_win, (player.dir.x +
+					player.pos.x) * G_BS + j, (player.pos.y + player.dir.y) *
+					G_BS + i, 0xFF00FF);
 			j++;
 		}
 		i++;
@@ -48,7 +51,7 @@ int		draw_grid(t_parse game, t_milix milix)
 		}
 		i++;
 	}
-	player_disp(game.player.pos, milix.mlx, milix.mlx_win);
+	player_disp(game.player, milix);
 	// mlx_loop_hook(milix.mlx, milix_loop)
 	return (0);
 }
