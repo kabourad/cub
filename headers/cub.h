@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/21 16:29:12 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/24 16:05:57 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 
 # include "../libft/libft.h"
-# include "../mlx_mms/mlx.h"
+# include "../mlx_old/mlx.h"
 # include "extras.h"
 # include "parsing.h"
 # include "camera.h"
