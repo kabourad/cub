@@ -17,7 +17,7 @@ int		plane(t_parse *game, int i)
 	t_vec	ray;
 	double	camx;
 
-	camx = 2 * i / game->resolution.width - 1;
+	camx = 2 * i / game->res.w - 1;
 	ray.x = game->player.dir.x + game->player.pln.x * camx;
 	ray.y = game->player.dir.y + game->player.pln.y * camx;
 	// drawing a ray
@@ -28,7 +28,7 @@ int		ray_cast(t_parse game)
 	int		i;
 
 	i = 0;
-	while (i < game.resolution.width)
+	while (i < game.res.w)
 	{
 		plane(&game, i);
 	}

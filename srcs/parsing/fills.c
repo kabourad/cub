@@ -16,8 +16,8 @@ t_res	res_fill(char **array)
 {
 	t_res	ret;
 
-	ret.width = ft_atoi(array[1]);
-	ret.height = ft_atoi(array[2]);
+	ret.w = ft_atoi(array[1]);
+	ret.h = ft_atoi(array[2]);
 	return (ret);
 }
 

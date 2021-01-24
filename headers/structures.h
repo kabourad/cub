@@ -15,8 +15,8 @@
 
 typedef struct		s_res
 {
-	int				width;
-	int				height;
+	int				w;
+	int				h;
 	int				sizex;
 	int				sizey;
 }					t_res;
@@ -67,5 +67,11 @@ typedef struct		s_mapll
 	int				i;
 	struct s_mapll	*next;
 }					t_mapll;
+
+typedef struct		s_milix
+{
+	void			*mlx;
+	void			*mlx_win;
+}					t_milix;
 
 #endif

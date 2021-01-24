@@ -24,10 +24,12 @@
 # include "camera.h"
 # include "debugging.h"
 # include "structures.h"
+# include "window.h"
 # include <fcntl.h>
 
 // # include "mlx.h"
 
 void		ft_extention(char *path, char *ext);
+void		execution(t_parse game);
 
 #endif

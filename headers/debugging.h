@@ -3,6 +3,6 @@
 
 # define PLAYER_SIZE 4
 
-int		draw_grid(t_parse game);
+int		draw_grid(t_parse game, t_milix milix);
 
 #endif

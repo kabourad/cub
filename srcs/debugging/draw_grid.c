@@ -28,32 +28,27 @@ int		border(int i, int j)
 		return (1);
 }
 
-int		draw_grid(t_parse game)
+int		draw_grid(t_parse game, t_milix milix)
 {
-	void	*mlx;
-	void	*mlx_win;
 	int		i;
 	int		j;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, game.res.width, game.res.height, "Hi!");
 	i = 0;
-	while (i < game.res.height + 25 && game.map[(int)i / G_BS])
+	while (i < game.res.h + 25 && game.map[(int)i / G_BS])
 	{
 		j = 0;
-		while (j < game.res.width + 25 && game.map[(int)i / G_BS][(int)(j / G_BS)])
+		while (j < game.res.w + 25 && game.map[(int)i / G_BS][(int)(j / G_BS)])
 		{
 			// printf("%c\n", game.map[(int)i / G_BS][(int)(j / G_BS)]);
 			if (border(i, j) && game.map[i / G_BS][j / G_BS] != ' ')
-				mlx_pixel_put(mlx, mlx_win, j, i, 0x444444);
+				mlx_pixel_put(milix.mlx, milix.mlx_win, j, i, 0x444444);
 			if (border(i, j) && game.map[(int)i / G_BS][(int)(j / G_BS)] && game.map[(int)i / G_BS][(int)(j / G_BS)] == '1')
-				mlx_pixel_put(mlx, mlx_win, j, i, 0xFFFFFF);
+				mlx_pixel_put(milix.mlx, milix.mlx_win, j, i, 0xFFFFFF);
 			j++;
 		}
 		i++;
 	}
-	player_disp(game.player.pos, mlx, mlx_win);
-	// mlx_loop_hook(mlx, rendering)
-	mlx_loop(mlx);
+	player_disp(game.player.pos, milix.mlx, milix.mlx_win);
+	// mlx_loop_hook(milix.mlx, milix_loop)
 	return (0);
 }

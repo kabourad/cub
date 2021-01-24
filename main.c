@@ -20,8 +20,8 @@ static int	ft_usage(void)
 
 void		ft_extention(char *path, char *ext)
 {
-	int			n;
-	int			m;
+	int		n;
+	int		m;
 
 	n = ft_strlen(path);
 	m = ft_strlen(ext);
@@ -29,14 +29,15 @@ void		ft_extention(char *path, char *ext)
 		quit("wrong extention: ", path);
 }
 
-int			main(int argc, char ** argv)
+int			main(int argc, char **argv)
 {
-	t_parse	    game;
+	t_parse	game;
+	t_milix	milix;
 
 	if (argc < 2 || argc > 3)
 		return (ft_usage());
 	ft_extention(argv[1], ".cub");
 	game = parsing(argv[1]);
-	draw_grid(game);
-	return(0);
+	execution(game);
+	return (0);
 }
