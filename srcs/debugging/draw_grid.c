@@ -22,7 +22,7 @@ int		player_disp(t_vec pos, void *mlx, void *mlx_win)
 
 int		border(int i, int j)
 {
-	if (i % G_BS == G_BS / 2 || j % G_BS == G_BS / 2)
+	if (i % G_BS == 0 || j % G_BS == 0)
 		return (0);
 	else
 		return (1);
@@ -38,21 +38,22 @@ int		draw_grid(t_parse game)
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, game.res.width, game.res.height, "Hi!");
 	i = 0;
-	while (i < game.res.height)
+	while (i < game.res.height + 25 && game.map[(int)i / G_BS])
 	{
 		j = 0;
-		while (j < game.res.width)
+		while (j < game.res.width + 25 && game.map[(int)i / G_BS][(int)(j / G_BS)])
 		{
-			printf("%c\n", game.map[i / G_BS][j / G_BS]);
-			if (border(i, j))
+			// printf("%c\n", game.map[(int)i / G_BS][(int)(j / G_BS)]);
+			if (border(i, j) && game.map[i / G_BS][j / G_BS] != ' ')
 				mlx_pixel_put(mlx, mlx_win, j, i, 0x444444);
-			if (border(i, j) && game.map[i / G_BS][j / G_BS] && game.map[i / G_BS][j / G_BS] == '1')
+			if (border(i, j) && game.map[(int)i / G_BS][(int)(j / G_BS)] && game.map[(int)i / G_BS][(int)(j / G_BS)] == '1')
 				mlx_pixel_put(mlx, mlx_win, j, i, 0xFFFFFF);
 			j++;
 		}
 		i++;
 	}
 	player_disp(game.player.pos, mlx, mlx_win);
+	// mlx_loop_hook(mlx, rendering)
 	mlx_loop(mlx);
 	return (0);
 }
