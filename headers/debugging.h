@@ -3,7 +3,7 @@
 
 # define PLAYER_SIZE 4
 
-int		draw_grid(t_milix *milix);
-int		key_close(t_milix *cub);
+int		draw_grid(t_cub *milix);
+int		key_close(t_cub *cub);
 
 #endif

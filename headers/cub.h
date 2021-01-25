@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/24 16:05:57 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/25 16:13:20 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../libft/libft.h"
 # include "../mlx_old/mlx.h"
 # include "extras.h"
+# include "execution.h"
 # include "parsing.h"
 # include "camera.h"
 # include "debugging.h"
@@ -30,6 +31,5 @@
 // # include "mlx.h"
 
 void		ft_extention(char *path, char *ext);
-void		execution(t_parse game);
 
 #endif

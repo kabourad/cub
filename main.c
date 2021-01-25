@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:04:43 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/21 16:25:41 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/25 15:54:56 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,12 @@ void		ft_extention(char *path, char *ext)
 
 int			main(int argc, char **argv)
 {
-	t_parse	game;
-	t_milix	milix;
+	t_cub	cub;
 
 	if (argc < 2 || argc > 3)
 		return (ft_usage());
 	ft_extention(argv[1], ".cub");
-	game = parsing(argv[1]);
-	execution(game);
+	cub.parse = parsing(argv[1]);
+	execution(&cub);
 	return (0);
 }

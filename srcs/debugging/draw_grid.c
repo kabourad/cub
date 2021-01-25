@@ -1,6 +1,6 @@
 #include "../../headers/cub.h"
 
-int		player_disp(t_milix *milix)
+int		player_disp(t_cub *cub)
 {
 	t_vec	pos;
 	t_vec	dir;
@@ -8,18 +8,18 @@ int		player_disp(t_milix *milix)
 	int		i;
 	int		j;
 
-	pos = milix->game.player.pos;
-	dir = milix->game.player.dir;
-	res = milix->game.res;
+	pos = cub->parse.player.pos;
+	dir = cub->parse.player.dir;
+	res = cub->parse.res;
 	i = -PLAYER_SIZE;
 	while (i <= PLAYER_SIZE)
 	{
 		j = -PLAYER_SIZE;
 		while (j <= PLAYER_SIZE)
 		{
-			milix->image->data[(int)((pos.y * G_BS + i) * res.w + pos.x * G_BS +
+			cub->image->data[(int)((pos.y * G_BS + i) * res.w + pos.x * G_BS +
 					j)] = 0xFF0000;
-			milix->image->data[(int)(((dir.y + pos.y) * G_BS + i) * res.w +
+			cub->image->data[(int)(((dir.y + pos.y) * G_BS + i) * res.w +
 					(dir.x + pos.x) * G_BS + j)] = 0xFF00FF;
 			j++;
 		}
@@ -36,30 +36,29 @@ int		border(int i, int j)
 		return (1);
 }
 
-int		draw_grid(t_milix *milix)
+int		draw_grid(t_cub *cub)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (i < milix->game.res.h + 25 && milix->game.map[(int)i / G_BS])
+	mlx_clear_window(cub->mlx, cub->mlx_win);
+	while (i < cub->parse.res.h + 25 && cub->parse.map[(int)i / G_BS])
 	{
 		j = 0;
-		while (j < milix->game.res.w + 25 && milix->game.map[(int)i / G_BS][(int)(j / G_BS)])
+		while (j < cub->parse.res.w + 25 && cub->parse.map[(int)i / G_BS]
+				[(int)(j / G_BS)])
 		{
-			if (border(i, j) && milix->game.map[i / G_BS][j / G_BS] != ' ')
-				milix->image->data[(i * milix->game.res.w) + j] = 0x444444;
-				// mlx_pixel_put(milix->mlx, milix->mlx_win, j, i, 0x444444);
-			if (border(i, j) && milix->game.map[(int)i / G_BS][(int)(j / G_BS)] && milix->game.map[(int)i / G_BS][(int)(j / G_BS)] == '1')
-				milix->image->data[(i * milix->game.res.w) + j] = 0xFFFFFF;
-				// mlx_pixel_put(milix->mlx, milix->mlx_win, j, i, 0xFFFFFF);
+			if (border(i, j) && cub->parse.map[i / G_BS][j / G_BS] != ' ')
+				cub->image->data[(i * cub->parse.res.w) + j] = 0x444444;
+			if (border(i, j) && cub->parse.map[(int)i / G_BS][(int)(j / G_BS)]
+					&& cub->parse.map[(int)i / G_BS][(int)(j / G_BS)] == '1')
+				cub->image->data[(i * cub->parse.res.w) + j] = 0xFFFFFF;
 			j++;
 		}
 		i++;
 	}
-	player_disp(milix);
-	mlx_put_image_to_window(milix->mlx, milix->mlx_win, milix->image->img, 0, 0);
-	if (milix->keyboard[53])
-		key_close(milix);
+	player_disp(cub);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image->img, 0, 0);
 	return (0);
 }

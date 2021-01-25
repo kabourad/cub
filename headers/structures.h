@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/25 12:25:31 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/25 15:51:03 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,22 @@ typedef struct		s_img
 	int				*data;
 }					t_img;
 
-typedef struct		s_milix
+typedef struct		s_keys
+{
+	int				w_k;
+	int				a_k;
+	int				s_k;
+	int				d_k;
+	int				esc;
+}					t_keys;
+
+typedef struct		s_cub
 {
 	void			*mlx;
 	void			*mlx_win;
-	int				keyboard[300];
+	t_keys			keys;
 	t_img			*image;
-	t_parse			game;
-}					t_milix;
+	t_parse			parse;
+}					t_cub;
 
 #endif

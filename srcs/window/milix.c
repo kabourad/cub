@@ -1,19 +1,21 @@
 #include "../../headers/cub.h"
 
-
-
-t_milix	milix_init(t_parse game)
+void	milix_init(t_cub *cub)
 {
-	t_milix	ret;
+	t_cub	ret;
 	int		i;
 
-	while (i < 300)
-		ret.keyboard[i++] = 0;
-	ret.mlx = mlx_init();
-	ret.mlx_win = mlx_new_window(ret.mlx, game.res.w, game.res.h, "Cub3D");
-	ret.image = (t_img*)malloc(sizeof(t_img));
-	ret.image->img = mlx_new_image(ret.mlx, game.res.w, game.res.h);
-	ret.image->data = (int *)mlx_get_data_addr(ret.image->img, &ret.image->bpp, &ret.image->size_line, &ret.image->endian);
-	ret.game = game;
-	return (ret);
+	cub->mlx = mlx_init();
+	cub->mlx_win = mlx_new_window(cub->mlx, cub->parse.res.w, cub->parse.res.h,
+			"Cub3D");
+	cub->image = (t_img*)malloc(sizeof(t_img));
+	cub->image->img = mlx_new_image(cub->mlx, cub->parse.res.w,
+			cub->parse.res.h);
+	cub->image->data = (int *)mlx_get_data_addr(cub->image->img,
+			&cub->image->bpp, &cub->image->size_line, &ret.image->endian);
+	cub->keys.w_k = 0;
+	cub->keys.a_k = 0;
+	cub->keys.s_k = 0;
+	cub->keys.d_k = 0;
+	cub->keys.esc = 0;
 }
