@@ -36,13 +36,22 @@ int		border(int i, int j)
 		return (1);
 }
 
+void	reset(t_cub *cub)
+{
+	int		i;
+
+	i = 0;
+	while (i < cub->parse.res.w * cub->parse.res.h)
+		cub->image->data[i++] = 0x0;
+}
+
 int		draw_grid(t_cub *cub)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	mlx_clear_window(cub->mlx, cub->mlx_win);
+	reset(cub);
 	while (i < cub->parse.res.h + 25 && cub->parse.map[(int)i / G_BS])
 	{
 		j = 0;

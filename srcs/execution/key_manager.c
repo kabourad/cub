@@ -44,13 +44,17 @@ int	key_close(t_cub *cub)
 int	key_manager(t_cub *cub)
 {
 	if (cub->keys.a_k)
-		cub->parse.player.pos.x -= 10 / G_BS;
+		cub->parse.player.pos.x -= 0.2;
+		// cub->parse.player.pos.x -= 10 / G_BS;
 	if (cub->keys.d_k)
-		cub->parse.player.pos.x += 10 / G_BS;
+		cub->parse.player.pos.x += 0.2;
+		// cub->parse.player.pos.x += 10 / G_BS;
 	if (cub->keys.w_k)
-		cub->parse.player.pos.y -= 10 / G_BS;
+		cub->parse.player.pos.y -= 0.2;
+		// cub->parse.player.pos.y -= 10 / G_BS;
 	if (cub->keys.s_k)
-		cub->parse.player.pos.y += 10 / G_BS;
+		cub->parse.player.pos.y += 0.2;
+		// cub->parse.player.pos.y += 10 / G_BS;
 	if (cub->keys.esc)
 		key_close(cub);
 	return (0);
