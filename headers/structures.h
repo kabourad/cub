@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/25 15:51:03 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/25 22:27:19 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ typedef struct		s_keys
 	int				a_k;
 	int				s_k;
 	int				d_k;
+	int				l_k;
+	int				r_k;
 	int				esc;
 }					t_keys;
 

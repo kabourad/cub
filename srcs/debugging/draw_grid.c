@@ -11,11 +11,12 @@ int		player_disp(t_cub *cub)
 	pos = cub->parse.player.pos;
 	dir = cub->parse.player.dir;
 	res = cub->parse.res;
-	i = -PLAYER_SIZE;
-	while (i <= PLAYER_SIZE)
+	printf("pos(%f, %f), dir(%f, %f), dot(%f, %f)\n", pos.x, pos.y, dir.x, dir.y, pos.x + dir.x, pos.y + dir.y);
+	i = -PL_SZ;
+	while (i <= PL_SZ)
 	{
-		j = -PLAYER_SIZE;
-		while (j <= PLAYER_SIZE)
+		j = -PL_SZ;
+		while (j <= PL_SZ)
 		{
 			cub->image->data[(int)((pos.y * G_BS + i) * res.w + pos.x * G_BS +
 					j)] = 0xFF0000;

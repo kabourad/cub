@@ -3,6 +3,5 @@
 
 #include "struct.h"
 
-# define G_BS 50
 
 #endif

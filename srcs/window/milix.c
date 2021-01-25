@@ -17,5 +17,7 @@ void	milix_init(t_cub *cub)
 	cub->keys.a_k = 0;
 	cub->keys.s_k = 0;
 	cub->keys.d_k = 0;
+	cub->keys.l_k = 0;
+	cub->keys.r_k = 0;
 	cub->keys.esc = 0;
 }
