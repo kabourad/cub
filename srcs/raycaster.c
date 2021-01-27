@@ -14,29 +14,31 @@
 
 void	rayon(t_parse *game, t_cam *cam, t_vec ray)
 {
-	cam->mapX = int(game.player.pos.x);
-    cam->mapY = int(game.player.pos.y);
-	if(ray.x < 0)
-      {
-        stepX = -1;
-        sideDist.x = ((int)(game.player.pos.x) - cam->mapX) * deltadist.x;
-      }
-      else
-      {
-        stepX = 1;
-        sideDistX = (cam->mapX + 1.0 - game.player.pos.x) * deltaDistX;
-      }
-      if(rayDirY < 0)
-      {
-        stepY = -1;
-        sideDistY = (game.player.pos.y - cam->mapY) * deltaDistY;
-      }
-      else
-      {
-        stepY = 1;
-        sideDistY = (cam->mapY + 1.0 - game.player.pos.y) * deltaDistY;
-      }
-	  
+	cam->mapx = (int)(game->player.pos.x);
+	cam->mapy = (int)game->player.pos.y;
+	if (ray.x < 0)
+	{
+		cam->stepx = -1;
+		cam->sidedist.x = ((int)(game->player.pos.x) - cam->mapx) *
+				cam->deltadist.x;
+	}
+	else
+	{
+		cam->stepx = 1;
+		cam->sidedist.x = (cam->mapx + 1.0 - game->player.pos.x) *
+				cam->deltadist.x;
+	}
+	if (ray.y < 0)
+	{
+		cam->stepy = -1;
+		cam->sidedist.y = (game->player.pos.y - cam->mapy) * cam->deltadist.y;
+	}
+	else
+	{
+		cam->stepy = 1;
+		cam->sidedist.y = (cam->mapy + 1.0 - game->player.pos.y) *
+				cam->deltadist.y;
+	}
 }
 
 int		plane(t_parse *game, int i, t_cam *cam)
@@ -47,20 +49,30 @@ int		plane(t_parse *game, int i, t_cam *cam)
 	camx = 2 * i / game->res.w - 1;
 	ray.x = game->player.dir.x + game->player.pln.x * camx;
 	ray.y = game->player.dir.y + game->player.pln.y * camx;
-	cam->deltadist.x = (ray.x == 0) ? 0 : ((ray.x == 0) ? 1 : abs(1 / ray.x));
-	cam->deltadist.y = (ray.y == 0) ? 0 : ((ray.y == 0) ? 1 : abs(1 / ray.y));
-	ray(game, cam, ray);
-	return(0);
+	if (ray.y == 0)
+		cam->deltadist.x = 0;
+	else if (ray.x == 0)
+		cam->deltadist.x = 1;
+	else
+		cam->deltadist.x = abs(1 / ray.x);
+	if (ray.x == 0)
+		cam->deltadist.y = 0;
+	else if (ray.y == 0)
+		cam->deltadist.y = 1;
+	else
+		cam->deltadist.y = abs(1 / ray.y);
+	rayon(game, cam, ray);
+	return (0);
 }
 
 int		ray_cast(t_parse game)
 {
 	int		i;
 	t_cam	cam;
+
 	i = 0;
 	while (i < game.res.w)
 	{
 		plane(&game, i, &cam);
-		
 	}
 }

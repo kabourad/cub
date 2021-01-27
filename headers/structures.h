@@ -97,4 +97,17 @@ typedef struct		s_cub
 	t_parse			parse;
 }					t_cub;
 
+typedef	struct		s_cam
+{
+	t_vec			sidedist;
+	t_vec			deltadist;
+	double			perpwalldist;
+	int				stepx;
+	int				stepy;
+	int				mapx;
+	int				mapy;
+	int				hit;
+	int				side;
+}					t_cam;
+
 #endif
