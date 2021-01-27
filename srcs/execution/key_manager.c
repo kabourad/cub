@@ -2,7 +2,6 @@
 
 int	key_press(int keycode, t_cub *cub)
 {
-	// printf("%d\n", keycode);
 	if (keycode == 53)
 		cub->keys.esc = 1;
 	else if (keycode == 13)
@@ -49,37 +48,24 @@ int	key_close(t_cub *cub)
 	return (0);
 }
 
-static void	rotate(t_cub *cub, double rot_spd)
-{
-	t_vec	dir;
-	t_vec	pln;
-
-	dir = cub->parse.player.dir;
-	pln = cub->parse.player.pln;
-	cub->parse.player.dir.x = dir.x * cos(rot_spd) - dir.y * sin(rot_spd);
-	cub->parse.player.dir.y = dir.x * sin(rot_spd) + dir.y * cos(rot_spd);
-	cub->parse.player.pln.x = pln.x * cos(rot_spd) - pln.y * sin(rot_spd);
-	cub->parse.player.pln.y = pln.x * sin(rot_spd) + pln.y * cos(rot_spd);
-}
-
 int	key_manager(t_cub *cub)
 {
 	t_vec	pos;
 
 	pos = cub->parse.player.pos;
-	if (cub->keys.a_k && pos.x && is_valid(cub->parse.map[(int)pos.y][(int)(pos.x - 0.25)]))
-		cub->parse.player.pos.x -= 0.2;
-	if (cub->keys.d_k && is_valid(cub->parse.map[(int)pos.y][(int)(pos.x + 0.25)])) // changes here
-		cub->parse.player.pos.x += 0.2;
-	if (cub->keys.w_k && pos.y && is_valid(cub->parse.map[(int)(pos.y - 0.25)][(int)pos.x]))
-		cub->parse.player.pos.y -= 0.2;
-	if (cub->keys.s_k && is_valid(cub->parse.map[(int)(pos.y + 0.25)][(int)pos.x])) // changes here
-		cub->parse.player.pos.y += 0.2;
 	if (cub->keys.esc)
 		key_close(cub);
+	if (cub->keys.a_k)
+		move(cub, cub->parse.player.pos, cub->parse.player.pln, MOV_SPD);
+	if (cub->keys.d_k)
+		move(cub, cub->parse.player.pos, cub->parse.player.pln, -MOV_SPD);
+	if (cub->keys.w_k)
+		move(cub, cub->parse.player.pos, cub->parse.player.dir, MOV_SPD);
+	if (cub->keys.s_k)
+		move(cub, cub->parse.player.pos, cub->parse.player.dir, -MOV_SPD);
 	if (cub->keys.l_k)
-		rotate(cub, (M_PI / 180) * -RT_SP);
+		rotate(cub, ROT_SPD);
 	if (cub->keys.r_k)
-		rotate(cub, (M_PI / 180) * RT_SP);
+		rotate(cub, -ROT_SPD);
 	return (0);
 }

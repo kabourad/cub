@@ -3,10 +3,17 @@
 
 # include "structures.h"
 
-# define PL_SZ	4
-# define G_BS	50
-# define MV_SP	0.2
-# define RT_SP	20
+# define PL_SZ		2
+# define G_BS		50
+# define MOV_SPD	0.2
+# define ROT_SPD	0.12
+
+/*
+** movements.c
+*/
+
+void	move(t_cub *cub, t_vec pos, t_vec vec, double mov_spd);
+void	rotate(t_cub *cub, double rot_spd);
 
 /*
 ** key_manager.c

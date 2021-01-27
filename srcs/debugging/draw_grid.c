@@ -4,14 +4,17 @@ int		player_disp(t_cub *cub)
 {
 	t_vec	pos;
 	t_vec	dir;
+	t_vec	dot;
 	t_res	res;
 	int		i;
 	int		j;
 
 	pos = cub->parse.player.pos;
 	dir = cub->parse.player.dir;
+	dot.x = dir.x + pos.x;
+	dot.y = dir.y + pos.y;
 	res = cub->parse.res;
-	printf("pos(%f, %f), dir(%f, %f), dot(%f, %f)\n", pos.x, pos.y, dir.x, dir.y, pos.x + dir.x, pos.y + dir.y);
+	printf("pos(%f, %f), dir(%f, %f), dot(%f, %f)\n", pos.x, pos.y, dir.x, dir.y, dot.x, dot.y);
 	i = -PL_SZ;
 	while (i <= PL_SZ)
 	{
@@ -20,8 +23,8 @@ int		player_disp(t_cub *cub)
 		{
 			cub->image->data[(int)((pos.y * G_BS + i) * res.w + pos.x * G_BS +
 					j)] = 0xFF0000;
-			cub->image->data[(int)(((dir.y + pos.y) * G_BS + i) * res.w +
-					(dir.x + pos.x) * G_BS + j)] = 0xFF00FF;
+			cub->image->data[(int)((dot.y * G_BS + i) * res.w + dot.x * G_BS +
+					j)] = 0xFF00FF;
 			j++;
 		}
 		i++;
