@@ -21,7 +21,16 @@ void	rendering(t_cub *cub, int n)
 			// bmp_filling(cub, &cub->f);
 		}
 		if (i >= cub->cam.drawstart && i <= cub->cam.drawend)
-			cub->image.data[i * cub->parse.res.w + n] = 0xFFFFFF;
+		{
+			if (cub->cam.side == 0)
+				cub->image.data[i * cub->parse.res.w + n] = 0x666666;
+			if (cub->cam.side == 1)
+				cub->image.data[i * cub->parse.res.w + n] = 0x666666 / 4;
+			if (cub->cam.side == 2)
+				cub->image.data[i * cub->parse.res.w + n] = 0x666666 / 2;
+			if (cub->cam.side == 3)
+				cub->image.data[i * cub->parse.res.w + n] = 0x666666 * 3 / 4;
+		}
 			// wallrendering(cub);
 		if (i > cub->cam.drawend)
 		{

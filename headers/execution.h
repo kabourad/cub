@@ -5,7 +5,7 @@
 
 # define PL_SZ		2
 # define G_BS		50
-# define MOV_SPD	0.2
+# define MOV_SPD	0.15
 # define ROT_SPD	0.1
 
 /*
