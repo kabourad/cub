@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 22:49:51 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/21 16:20:53 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/29 23:35:17 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ t_res	res_fill(char **array)
 	return (ret);
 }
 
-t_col	color_fill(char *str)
+t_rgb	color_fill(char *str)
 {
 	char	**arr;
-	t_col	ret;
+	t_rgb	ret;
 
 	arr = ft_split(str, ',');
 	if (ft_arrlen(arr) != 3)

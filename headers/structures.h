@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/25 22:27:19 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/29 23:48:12 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ typedef struct		s_path
 	char			*sprite;
 }					t_path;
 
-typedef struct		s_col
+typedef struct		s_rgb
 {
 	int				r;
 	int				g;
 	int				b;
-}					t_col;
+}					t_rgb;
 
 typedef struct		s_vec
 {
@@ -55,8 +55,8 @@ typedef struct		s_parse
 	int				ids;
 	t_res			res;
 	t_path			paths;
-	t_col			floor;
-	t_col			ceiling;
+	t_rgb			floor;
+	t_rgb			ceiling;
 	t_player		player;
 	char			**map;
 }					t_parse;
@@ -88,26 +88,37 @@ typedef struct		s_keys
 	int				esc;
 }					t_keys;
 
-typedef struct		s_cub
+typedef struct		s_bin
 {
-	void			*mlx;
-	void			*mlx_win;
-	t_keys			keys;
-	t_img			*image;
-	t_parse			parse;
-}					t_cub;
+	int				x;
+	int				y;
+}					t_bin;
 
 typedef	struct		s_cam
 {
 	t_vec			sidedist;
 	t_vec			deltadist;
+	t_vec			ray;
+	t_bin			step;
+	t_bin			map;
+	double			camera;
 	double			perpwalldist;
-	int				stepx;
-	int				stepy;
-	int				mapx;
-	int				mapy;
+	// double			wallx;
 	int				hit;
 	int				side;
+	int				lineheight;
+	int				drawstart;
+	int				drawend;
 }					t_cam;
+
+typedef struct		s_cub
+{
+	void			*mlx;
+	void			*mlx_win;
+	t_keys			keys;
+	t_img			image;
+	t_cam			cam;
+	t_parse			parse;
+}					t_cub;
 
 #endif

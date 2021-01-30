@@ -42,13 +42,13 @@ int	key_close(t_cub *cub)
 {
 	if (cub->mlx_win)
 		mlx_destroy_window(cub->mlx, cub->mlx_win);
-	if (cub->image->img)
-		mlx_destroy_image(cub->mlx, cub->image->img);
+	if (cub->image.img)
+		mlx_destroy_image(cub->mlx, cub->image.img);
 	exit(0);
 	return (0);
 }
 
-int	key_manager(t_cub *cub)
+int	mv_manager(t_cub *cub)
 {
 	t_vec	pos;
 
@@ -56,9 +56,9 @@ int	key_manager(t_cub *cub)
 	if (cub->keys.esc)
 		key_close(cub);
 	if (cub->keys.a_k)
-		move(cub, cub->parse.player.pos, cub->parse.player.pln, MOV_SPD);
-	if (cub->keys.d_k)
 		move(cub, cub->parse.player.pos, cub->parse.player.pln, -MOV_SPD);
+	if (cub->keys.d_k)
+		move(cub, cub->parse.player.pos, cub->parse.player.pln, MOV_SPD);
 	if (cub->keys.w_k)
 		move(cub, cub->parse.player.pos, cub->parse.player.dir, MOV_SPD);
 	if (cub->keys.s_k)

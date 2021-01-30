@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:04:43 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/25 15:54:56 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/29 17:22:40 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int			main(int argc, char **argv)
 		return (ft_usage());
 	ft_extention(argv[1], ".cub");
 	cub.parse = parsing(argv[1]);
-	execution(&cub);
+	ray_casting(&cub);
 	return (0);
 }

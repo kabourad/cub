@@ -21,9 +21,9 @@ int		player_disp(t_cub *cub)
 		j = -PL_SZ;
 		while (j <= PL_SZ)
 		{
-			cub->image->data[(int)((pos.y * G_BS + i) * res.w + pos.x * G_BS +
+			cub->image.data[(int)((pos.y * G_BS + i) * res.w + pos.x * G_BS +
 					j)] = 0xFF0000;
-			cub->image->data[(int)((dot.y * G_BS + i) * res.w + dot.x * G_BS +
+			cub->image.data[(int)((dot.y * G_BS + i) * res.w + dot.x * G_BS +
 					j)] = 0xFF00FF;
 			j++;
 		}
@@ -46,7 +46,7 @@ void	reset(t_cub *cub)
 
 	i = 0;
 	while (i < cub->parse.res.w * cub->parse.res.h)
-		cub->image->data[i++] = 0x0;
+		cub->image.data[i++] = 0x0;
 }
 
 int		draw_grid(t_cub *cub)
@@ -56,22 +56,22 @@ int		draw_grid(t_cub *cub)
 
 	i = 0;
 	reset(cub);
-	while (i < cub->parse.res.h + 25 && cub->parse.map[(int)i / G_BS])
+	while (i < cub->parse.res.h && cub->parse.map[(int)i / G_BS])
 	{
 		j = 0;
-		while (j < cub->parse.res.w + 25 && cub->parse.map[(int)i / G_BS]
+		while (j < cub->parse.res.w && cub->parse.map[(int)i / G_BS]
 				[(int)(j / G_BS)])
 		{
 			if (border(i, j) && cub->parse.map[i / G_BS][j / G_BS] != ' ')
-				cub->image->data[(i * cub->parse.res.w) + j] = 0x444444;
+				cub->image.data[(i * cub->parse.res.w) + j] = 0x444444;
 			if (border(i, j) && cub->parse.map[(int)i / G_BS][(int)(j / G_BS)]
 					&& cub->parse.map[(int)i / G_BS][(int)(j / G_BS)] == '1')
-				cub->image->data[(i * cub->parse.res.w) + j] = 0xFFFFFF;
+				cub->image.data[(i * cub->parse.res.w) + j] = 0xFFFFFF;
 			j++;
 		}
 		i++;
 	}
 	player_disp(cub);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image->img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image.img, 0, 0);
 	return (0);
 }

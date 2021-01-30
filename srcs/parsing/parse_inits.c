@@ -13,9 +13,9 @@ static t_player	init_player(void)
 	return (ret);
 }
 
-static t_col	init_color(void)
+static t_rgb	init_color(void)
 {
-	t_col		ret;
+	t_rgb		ret;
 
 	ret.r = 0;
 	ret.g = 0;
