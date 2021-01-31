@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:54:19 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/19 15:54:16 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/01/31 15:28:05 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_strcmp(const char *s1, const char *s2)
 
 	st1 = (unsigned char*)s1;
 	st2 = (unsigned char*)s2;
+	if (!st1 || !st2)
+		return (0);
 	if (*st1 == '\0' && *st2 == '\0')
 		return (0);
 	if (*st1 == *st2)

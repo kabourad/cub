@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/31 17:20:43 by kabourad          #+#    #+#             */
+/*   Updated: 2021/01/31 17:20:44 by kabourad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../headers/cub.h"
 
 static void	ft_trace(t_cub *cub)
@@ -22,12 +34,12 @@ static void	ft_trace(t_cub *cub)
 
 static int	main_cast(t_cub *cub)
 {
-	// mlx_destroy_image(cub->mlx, cub->image.img);
-	// mlx_clear_window(cub->mlx, cub->mlx_win);
-	// if (cub->mlx_win)
-	// 	mlx_destroy_window(cub->mlx, cub->mlx_win);
-	// if (cub->image.img)
+	mlx_destroy_image(cub->mlx, cub->image.img);
+	mlx_clear_window(cub->mlx, cub->mlx_win);
+	// if (cub->image.img && cub->image.img)
 	// 	mlx_destroy_image(cub->mlx, cub->image.img);
+	// if (cub->mlx_win && cub->mlx)
+	// 	mlx_destroy_window(cub->mlx, cub->mlx_win);
 	mv_manager(cub);
 	ft_trace(cub);
 	return(0);
