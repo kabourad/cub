@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/31 17:20:35 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/02 18:01:14 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ typedef struct		s_res
 {
 	int				w;
 	int				h;
-	int				sizex;
-	int				sizey;
 }					t_res;
 
 typedef struct		s_path
@@ -74,8 +72,19 @@ typedef struct		s_img
 	int				size_line;
 	int				endian;
 	void			*img;
-	int				*data;
+	char			*data;
 }					t_img;
+
+typedef struct		s_text
+{
+	int				bpp;
+	int				size_line;
+	int				endian;
+	int				width;
+	int				height;
+	void			*img;
+	char			*data;
+}					t_text;
 
 typedef struct		s_keys
 {
@@ -101,9 +110,12 @@ typedef	struct		s_cam
 	t_vec			ray;
 	t_bin			step;
 	t_bin			map;
+	t_bin			texture;
 	double			camera;
 	double			perpwalldist;
-	// double			wallx;
+	double			wallx;
+	double			texstep;
+	double			texpos;
 	int				hit;
 	int				side;
 	int				lineheight;
@@ -117,6 +129,7 @@ typedef struct		s_cub
 	void			*mlx_win;
 	t_keys			keys;
 	t_img			image;
+	t_text			texture[4];
 	t_cam			cam;
 	t_parse			parse;
 }					t_cub;

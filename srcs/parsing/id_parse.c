@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:06:31 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/21 16:20:53 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/02 16:52:29 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		id_fill(int fd, t_parse *stru)
 	line = NULL;
 	while (stru->ids < 255)
 	{
-		if ((n = get_next_line(fd, &line)) > 0)
+		if ((n = get_next_line(fd, &line)) > 0 && line && line[0])
 			id_seek_n_fill(line, stru);
 		if (!n && stru->ids < 255)
 			quit("Incomplete file", NULL);

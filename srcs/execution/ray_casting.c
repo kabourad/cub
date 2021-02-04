@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ray_casting.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/31 17:20:43 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/31 17:20:44 by kabourad         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../headers/cub.h"
 
 static void	ft_trace(t_cub *cub)
@@ -18,7 +6,7 @@ static void	ft_trace(t_cub *cub)
 
 	i = 0;
 	cub->image.img = mlx_new_image(cub->mlx, cub->parse.res.w, cub->parse.res.h);
-	cub->image.data = (int *)mlx_get_data_addr(cub->image.img,
+	cub->image.data = mlx_get_data_addr(cub->image.img,
 		&cub->image.bpp, &cub->image.size_line, &cub->image.endian);
 	while (i < cub->parse.res.w)
 	{
@@ -36,10 +24,6 @@ static int	main_cast(t_cub *cub)
 {
 	mlx_destroy_image(cub->mlx, cub->image.img);
 	mlx_clear_window(cub->mlx, cub->mlx_win);
-	// if (cub->image.img && cub->image.img)
-	// 	mlx_destroy_image(cub->mlx, cub->image.img);
-	// if (cub->mlx_win && cub->mlx)
-	// 	mlx_destroy_window(cub->mlx, cub->mlx_win);
 	mv_manager(cub);
 	ft_trace(cub);
 	return(0);
@@ -67,6 +51,7 @@ int			ray_casting(t_cub *cub)
 	cub->mlx_win = mlx_new_window(cub->mlx, cub->parse.res.w, cub->parse.res.h,
 			"CUB3D");
 	cub->keys = keys_init();
+	texture_init(cub);
 	ft_trace(cub);
 	mlx_hook(cub->mlx_win, 2, 0, key_press, cub);
 	mlx_hook(cub->mlx_win, 3, 0, key_release, cub);

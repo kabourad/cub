@@ -96,15 +96,15 @@ void	wall(t_cub *cub)
 	cub->cam.drawend = cub->cam.lineheight / 2 + (cub->parse.res.h / 2);
 	if (cub->cam.drawend >= cub->parse.res.h)
 		cub->cam.drawend = cub->parse.res.h - 1;
-	// if (cub->side == 0 || cub->side == 2)
-	// 	cub->wallx = cub->posy + cub->perpwalldist * cub->raydiry;
-	// else
-	// 	cub->wallx = cub->posx + cub->perpwalldist * cub->raydirx;
-	// cub->wallx -= floor((cub->wallx));
-	// cub->tex_x = (int)(cub->wallx * (double)(cub->texwidth));//later
-	// if (cub->side == 0 && cub->raydirx > 0)
-	// 	cub->tex_x = cub->texwidth - cub->tex_x - 1;
-	// if (cub->side == 1 && cub->raydiry < 0)
-	// 	cub->tex_x = cub->texwidth - cub->tex_x - 1;
-	// cub->step = 1.0 * cub->texheight / cub->lineheight;//later
+	if (cub->cam.side == 0 || cub->cam.side == 2)
+		cub->cam.wallx = cub->parse.player.pos.y + cub->cam.perpwalldist * cub->cam.ray.y;
+	else
+		cub->cam.wallx = cub->parse.player.pos.x + cub->cam.perpwalldist * cub->cam.ray.x;
+	cub->cam.wallx -= floor((cub->cam.wallx));
+	cub->cam.texture.x = (int)(cub->cam.wallx * (double)(TEX_WID));
+	if (cub->cam.side == 0 && cub->cam.ray.x > 0)
+		cub->cam.texture.x = TEX_WID - cub->cam.texture.x - 1;
+	if (cub->cam.side == 1 && cub->cam.ray.y < 0)
+		cub->cam.texture.x = TEX_WID - cub->cam.texture.x - 1;
+	cub->cam.texstep = 1.0 * TEX_HEI / cub->cam.lineheight;
 }

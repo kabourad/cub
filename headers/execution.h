@@ -5,8 +5,10 @@
 
 # define PL_SZ		2
 # define G_BS		50
-# define MOV_SPD	0.15
+# define MOV_SPD	0.2
 # define ROT_SPD	0.1
+# define TEX_WID	64
+# define TEX_HEI	64
 
 /*
 ** calculations.c
@@ -45,5 +47,11 @@ void	rotate(t_cub *cub, double rot_spd);
 
 // int		draw_grid(t_cub *milix);
 int		ray_casting(t_cub *cub);
+
+/*
+** textures.c
+*/
+
+void	texture_init(t_cub *cub);
 
 #endif

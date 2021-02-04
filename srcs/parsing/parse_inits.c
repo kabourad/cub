@@ -41,8 +41,6 @@ static t_res	init_res(void)
 
 	ret.w = 0;
 	ret.h = 0;
-	ret.sizex = 0;
-	ret.sizey = 0;
 	return (ret);
 }
 

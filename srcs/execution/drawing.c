@@ -8,35 +8,83 @@ static int	rgb(t_rgb color)
 	return (ret);
 }
 
+void		pixel_fill(t_cub *cub, int x, int y, int color)
+{
+	unsigned char *src;
+	unsigned char r;
+	unsigned char g;
+	unsigned char b;
+
+	src = (unsigned char *)&color;
+	r = src[0];
+	g = src[1];
+	b = src[2];
+	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8] = r;
+	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 1] = g;
+	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 2] = b;
+}
+
+static void	wall_rendering(t_cub *cub, int x, int y, int n)
+{
+	int		d;
+
+	d = y * cub->texture[n].size_line - cub->parse.res.h *
+			cub->texture[n].size_line / 2 + cub->cam.lineheight *
+			cub->texture[n].size_line / 2;
+	cub->cam.texture.y = ((d * cub->texture[n].height) / cub->cam.lineheight)
+		/ cub->texture[n].size_line;
+	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8] =
+		cub->texture[n].data[cub->cam.texture.y * cub->texture[n].size_line
+		+ cub->cam.texture.x * (cub->texture[n].bpp / 8)];
+	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 1] =
+		cub->texture[n].data[cub->cam.texture.y * cub->texture[n].size_line
+		+ cub->cam.texture.x * (cub->texture[n].bpp / 8) + 1];
+	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 2] =
+		cub->texture[n].data[cub->cam.texture.y * cub->texture[n].size_line
+		+ cub->cam.texture.x * (cub->texture[n].bpp / 8) + 2];
+	// int		color;
+	
+	// cub->cam.texture.y = (int)cub->cam.texpos;
+	// cub->cam.texpos += cub->cam.texstep;
+	// if (cub->cam.side == 0)
+	// 	color = cub->texture[2].data[cub->cam.texture.x * + cub->cam.texture.y *
+	// 			cub->texture->size_line;
+	// else if (cub->cam.side == 1)
+	// 	color = cub->texture[3].data[cub->cam.texture.x + cub->cam.texture.y *
+	// 			cub->texture[3].width];
+	// else if (cub->cam.side == 2)
+	// 	color = cub->texture[0].data[cub->cam.texture.x + cub->cam.texture.y *
+	// 			cub->texture[0].width];
+	// else if (cub->cam.side == 3)
+	// 	color = cub->texture[1].data[cub->cam.texture.x + cub->cam.texture.y *
+	// 			cub->texture[1].width];
+	// pixel_fill(cub, x, y, color);
+}
+
 void	rendering(t_cub *cub, int n)
 {
 	int		i;
 
 	i = 0;
+	cub->cam.texpos = (cub->cam.drawstart - cub->parse.res.h / 2 +
+			cub->cam.lineheight / 2) * cub->cam.texstep;
 	while (i < cub->parse.res.h)
 	{
 		if (i < cub->cam.drawstart)
-		{
-			cub->image.data[i * cub->parse.res.w + n] = rgb(cub->parse.ceiling);
-			// bmp_filling(cub, &cub->f);
-		}
+			pixel_fill(cub, n, i, rgb(cub->parse.ceiling));
 		if (i >= cub->cam.drawstart && i <= cub->cam.drawend)
 		{
 			if (cub->cam.side == 0)
-				cub->image.data[i * cub->parse.res.w + n] = 0x666666;
-			if (cub->cam.side == 1)
-				cub->image.data[i * cub->parse.res.w + n] = 0x666666 / 4;
-			if (cub->cam.side == 2)
-				cub->image.data[i * cub->parse.res.w + n] = 0x666666 / 2;
-			if (cub->cam.side == 3)
-				cub->image.data[i * cub->parse.res.w + n] = 0x666666 * 3 / 4;
+				wall_rendering(cub, n, i, 2);
+			else if (cub->cam.side == 1)
+				wall_rendering(cub, n, i, 3);
+			else if (cub->cam.side == 2)
+				wall_rendering(cub, n, i, 0);
+			else if (cub->cam.side == 3)
+				wall_rendering(cub, n, i, 1);
 		}
-			// wallrendering(cub);
 		if (i > cub->cam.drawend)
-		{
-			cub->image.data[i * cub->parse.res.w + n] = rgb(cub->parse.floor);
-			// bmp_filling(cub, &cub->c);
-		}
+			pixel_fill(cub, n, i, rgb(cub->parse.floor));
 		i++;
 	}
 }
