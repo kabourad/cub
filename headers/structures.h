@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/02/02 18:01:14 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:57:00 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ typedef struct		s_res
 	int				w;
 	int				h;
 }					t_res;
+
+typedef struct		s_bin
+{
+	int				x;
+	int				y;
+}					t_bin;
 
 typedef struct		s_path
 {
@@ -48,14 +54,23 @@ typedef struct		s_player
 	t_vec			pln;
 }					t_player;
 
+typedef struct		s_sprite
+{
+	t_bin			pos;
+	double			dis;
+	int				order;
+}					t_sprite;
+
 typedef struct		s_parse
 {
 	int				ids;
+	int				spr_num;
 	t_res			res;
 	t_path			paths;
 	t_rgb			floor;
 	t_rgb			ceiling;
-	t_player		player;
+	t_player		ply;
+	t_sprite		*sprites;
 	char			**map;
 }					t_parse;
 
@@ -97,12 +112,6 @@ typedef struct		s_keys
 	int				esc;
 }					t_keys;
 
-typedef struct		s_bin
-{
-	int				x;
-	int				y;
-}					t_bin;
-
 typedef	struct		s_cam
 {
 	t_vec			sidedist;
@@ -112,10 +121,11 @@ typedef	struct		s_cam
 	t_bin			map;
 	t_bin			texture;
 	double			camera;
-	double			perpwalldist;
+	double			pwd;
 	double			wallx;
 	double			texstep;
 	double			texpos;
+	double			*z_buff;
 	int				hit;
 	int				side;
 	int				lineheight;

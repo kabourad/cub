@@ -8,15 +8,18 @@ static void	ft_trace(t_cub *cub)
 	cub->image.img = mlx_new_image(cub->mlx, cub->parse.res.w, cub->parse.res.h);
 	cub->image.data = mlx_get_data_addr(cub->image.img,
 		&cub->image.bpp, &cub->image.size_line, &cub->image.endian);
+	cub->cam.z_buff = (double*)malloc(sizeof(double) * cub->parse.res.w);
 	while (i < cub->parse.res.w)
 	{
 		delta(cub, i);
 		side_distance(cub);
 		dda(cub);
 		wall(cub);
+		cub->cam.z_buff[i] = cub->cam.pwd;
 		rendering(cub, i);
 		i++;
 	}
+	sprites(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image.img, 0, 0);
 }
 
@@ -45,8 +48,6 @@ static t_keys	keys_init(void)
 
 int			ray_casting(t_cub *cub)
 {
-	t_cam	cam;
-
 	cub->mlx = mlx_init();
 	cub->mlx_win = mlx_new_window(cub->mlx, cub->parse.res.w, cub->parse.res.h,
 			"CUB3D");

@@ -9,8 +9,8 @@ int		player_disp(t_cub *cub)
 	int		i;
 	int		j;
 
-	pos = cub->parse.player.pos;
-	dir = cub->parse.player.dir;
+	pos = cub->parse.ply.pos;
+	dir = cub->parse.ply.dir;
 	dot.x = dir.x + pos.x;
 	dot.y = dir.y + pos.y;
 	res = cub->parse.res;

@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:20:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 16:32:29 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:18:27 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,40 @@ static char		**map_convert(t_mapll *map)
 	return (ret);
 }
 
+static t_sprite	*sprite_fill(t_parse *stru)
+{
+	t_sprite	*ret;
+	int			i;
+	int			j;
+	int			k;
+
+	ret = (t_sprite*)malloc(stru->spr_num * sizeof(t_sprite));
+	i = 0;
+	k = 0;
+	while (stru->map[i])
+	{
+		j = 0;
+		while (stru->map[i][j])
+		{
+			if (stru->map[i][j] == '2')
+			{
+				ret[k].pos.x = j;
+				ret[k].pos.y = i;
+				k++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (ret);
+}
+
 void			map_fill(int fd, t_parse *stru)
 {
-	t_mapll	*map;
-	char	*line;
-	int		n;
-	int		i;
+	t_mapll		*map;
+	char		*line;
+	int			n;
+	int			i;
 
 	line = NULL;
 	map = NULL;
@@ -97,5 +125,6 @@ void			map_fill(int fd, t_parse *stru)
 	}
 	check_last_line(map);
 	stru->map = map_convert(map);
+	stru->sprites = sprite_fill(stru);
 	stru->ids |= MP_ID;
 }

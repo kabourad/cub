@@ -49,11 +49,13 @@ t_parse			stru_init(void)
 	t_parse		stru;
 
 	stru.ids = 0;
+	stru.spr_num = 0;
 	stru.res = init_res();
 	stru.paths = init_path();
 	stru.floor = init_color();
 	stru.ceiling = init_color();
-	stru.player = init_player();
+	stru.ply = init_player();
+	stru.sprites = NULL;
 	stru.map = NULL;
 	return (stru);
 }

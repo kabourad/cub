@@ -5,12 +5,12 @@ void	delta(t_cub *cub, int i)
 
 	cub->cam.hit = 0;
 	cub->cam.camera = 2 * i / (double)cub->parse.res.w - 1;
-	cub->cam.ray.x = cub->parse.player.dir.x + cub->parse.player.pln.x
+	cub->cam.ray.x = cub->parse.ply.dir.x + cub->parse.ply.pln.x
 			* cub->cam.camera;
-	cub->cam.ray.y = cub->parse.player.dir.y + cub->parse.player.pln.y
+	cub->cam.ray.y = cub->parse.ply.dir.y + cub->parse.ply.pln.y
 			* cub->cam.camera;
-	cub->cam.map.x = (int)cub->parse.player.pos.x;
-	cub->cam.map.y = (int)cub->parse.player.pos.y;
+	cub->cam.map.x = (int)cub->parse.ply.pos.x;
+	cub->cam.map.y = (int)cub->parse.ply.pos.y;
 	cub->cam.deltadist.x = sqrt(1 + pow(cub->cam.ray.y, 2)
 			/ pow(cub->cam.ray.x, 2));
 	cub->cam.deltadist.y = sqrt(1 + pow(cub->cam.ray.x, 2)
@@ -30,25 +30,25 @@ void	side_distance(t_cub *cub)
 	if (cub->cam.ray.x < 0)
 	{
 		cub->cam.step.x = -1;
-		cub->cam.sidedist.x = (cub->parse.player.pos.x - cub->cam.map.x)
+		cub->cam.sidedist.x = (cub->parse.ply.pos.x - cub->cam.map.x)
 				* cub->cam.deltadist.x;
 	}
 	else
 	{
 		cub->cam.step.x = 1;
-		cub->cam.sidedist.x = (cub->cam.map.x + 1.0 - cub->parse.player.pos.x)
+		cub->cam.sidedist.x = (cub->cam.map.x + 1.0 - cub->parse.ply.pos.x)
 				* cub->cam.deltadist.x;
 	}
 	if (cub->cam.ray.y < 0)
 	{
 		cub->cam.step.y = -1;
-		cub->cam.sidedist.y = (cub->parse.player.pos.y - cub->cam.map.y)
+		cub->cam.sidedist.y = (cub->parse.ply.pos.y - cub->cam.map.y)
 				* cub->cam.deltadist.y;
 	}
 	else
 	{
 		cub->cam.step.y = 1;
-		cub->cam.sidedist.y = (cub->cam.map.y + 1.0 - cub->parse.player.pos.y)
+		cub->cam.sidedist.y = (cub->cam.map.y + 1.0 - cub->parse.ply.pos.y)
 				* cub->cam.deltadist.y;
 	}
 }
@@ -74,22 +74,19 @@ void	dda(t_cub *cub)
 		else if (cub->cam.side == 3 && cub->cam.ray.y < 0)
 			cub->cam.side = 1;
 		if (cub->parse.map[cub->cam.map.y][cub->cam.map.x] == '1')
-		// printf("[%d][%d]\n", cub->cam.map.y, cub->cam.map.x);
-		// if (!is_valid(cub->parse.map[cub->cam.map.y][cub->cam.map.x]))
 			cub->cam.hit = 1;
-		// printf("No segfault behind\n");
 	}
 }
 
 void	wall(t_cub *cub)
 {
 	if (cub->cam.side == 0 || cub->cam.side == 2)
-		cub->cam.perpwalldist = (cub->cam.map.x - cub->parse.player.pos.x
-				+ (1 - cub->cam.step.x) / 2) / cub->cam.ray.x;
+		cub->cam.pwd = (cub->cam.map.x - cub->parse.ply.pos.x + 
+				(1 - cub->cam.step.x) / 2) / cub->cam.ray.x;
 	else
-		cub->cam.perpwalldist = (cub->cam.map.y - cub->parse.player.pos.y
-				+ (1 - cub->cam.step.y) / 2) / cub->cam.ray.y;
-	cub->cam.lineheight = (int)(cub->parse.res.h / cub->cam.perpwalldist);
+		cub->cam.pwd = (cub->cam.map.y - cub->parse.ply.pos.y +
+				(1 - cub->cam.step.y) / 2) / cub->cam.ray.y;
+	cub->cam.lineheight = (int)(cub->parse.res.h / cub->cam.pwd);
 	cub->cam.drawstart = (-cub->cam.lineheight / 2) + (cub->parse.res.h / 2);
 	if (cub->cam.drawstart < 0)
 		cub->cam.drawstart = 0;
@@ -97,9 +94,9 @@ void	wall(t_cub *cub)
 	if (cub->cam.drawend >= cub->parse.res.h)
 		cub->cam.drawend = cub->parse.res.h - 1;
 	if (cub->cam.side == 0 || cub->cam.side == 2)
-		cub->cam.wallx = cub->parse.player.pos.y + cub->cam.perpwalldist * cub->cam.ray.y;
+		cub->cam.wallx = cub->parse.ply.pos.y + cub->cam.pwd * cub->cam.ray.y;
 	else
-		cub->cam.wallx = cub->parse.player.pos.x + cub->cam.perpwalldist * cub->cam.ray.x;
+		cub->cam.wallx = cub->parse.ply.pos.x + cub->cam.pwd * cub->cam.ray.x;
 	cub->cam.wallx -= floor((cub->cam.wallx));
 	cub->cam.texture.x = (int)(cub->cam.wallx * (double)(TEX_WID));
 	if (cub->cam.side == 0 && cub->cam.ray.x > 0)

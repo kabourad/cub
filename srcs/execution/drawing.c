@@ -42,23 +42,6 @@ static void	wall_rendering(t_cub *cub, int x, int y, int n)
 	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 2] =
 		cub->texture[n].data[cub->cam.texture.y * cub->texture[n].size_line
 		+ cub->cam.texture.x * (cub->texture[n].bpp / 8) + 2];
-	// int		color;
-	
-	// cub->cam.texture.y = (int)cub->cam.texpos;
-	// cub->cam.texpos += cub->cam.texstep;
-	// if (cub->cam.side == 0)
-	// 	color = cub->texture[2].data[cub->cam.texture.x * + cub->cam.texture.y *
-	// 			cub->texture->size_line;
-	// else if (cub->cam.side == 1)
-	// 	color = cub->texture[3].data[cub->cam.texture.x + cub->cam.texture.y *
-	// 			cub->texture[3].width];
-	// else if (cub->cam.side == 2)
-	// 	color = cub->texture[0].data[cub->cam.texture.x + cub->cam.texture.y *
-	// 			cub->texture[0].width];
-	// else if (cub->cam.side == 3)
-	// 	color = cub->texture[1].data[cub->cam.texture.x + cub->cam.texture.y *
-	// 			cub->texture[1].width];
-	// pixel_fill(cub, x, y, color);
 }
 
 void	rendering(t_cub *cub, int n)

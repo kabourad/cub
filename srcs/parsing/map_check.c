@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/01/19 16:30:33 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/08 15:35:01 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ void			twod_check(t_mapll *tmp, char *line, int i, t_parse *stru)
 {
 	if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
 			&& !(stru->ids & PL_ID))
-		stru->player = fill_player(stru, tmp, line, i);
+		stru->ply = fill_player(stru, tmp, line, i);
 	else if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
 			|| line[i] == 'W') && (stru->ids & PL_ID))
-		quit("It's a single player game verify map.", NULL);
+		quit("It's a single ply game verify map.", NULL);
+	if (line[i] = '2')
+		stru->spr_num++;
 	if ((tmp && tmp->line[i] != '1' && !is_valid(tmp->line[i])) ||
 			(line[i + 1] != '1' && !is_valid(line[i + 1])))
 		quit("Invalid map.", NULL);

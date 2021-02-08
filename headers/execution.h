@@ -49,6 +49,12 @@ void	rotate(t_cub *cub, double rot_spd);
 int		ray_casting(t_cub *cub);
 
 /*
+** sprites.c
+*/
+
+void	sprites(t_cub *cub);
+
+/*
 ** textures.c
 */
 

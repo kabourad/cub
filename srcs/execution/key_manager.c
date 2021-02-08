@@ -50,17 +50,17 @@ int	mv_manager(t_cub *cub)
 {
 	t_vec	pos;
 
-	pos = cub->parse.player.pos;
+	pos = cub->parse.ply.pos;
 	if (cub->keys.esc)
 		key_close(cub);
 	if (cub->keys.a_k)
-		move(cub, cub->parse.player.pos, cub->parse.player.pln, -MOV_SPD);
+		move(cub, cub->parse.ply.pos, cub->parse.ply.pln, -MOV_SPD);
 	if (cub->keys.d_k)
-		move(cub, cub->parse.player.pos, cub->parse.player.pln, MOV_SPD);
+		move(cub, cub->parse.ply.pos, cub->parse.ply.pln, MOV_SPD);
 	if (cub->keys.w_k)
-		move(cub, cub->parse.player.pos, cub->parse.player.dir, MOV_SPD);
+		move(cub, cub->parse.ply.pos, cub->parse.ply.dir, MOV_SPD);
 	if (cub->keys.s_k)
-		move(cub, cub->parse.player.pos, cub->parse.player.dir, -MOV_SPD);
+		move(cub, cub->parse.ply.pos, cub->parse.ply.dir, -MOV_SPD);
 	if (cub->keys.l_k)
 		rotate(cub, ROT_SPD);
 	if (cub->keys.r_k)
