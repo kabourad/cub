@@ -4,11 +4,11 @@ static void	ft_trace(t_cub *cub)
 {
 	int	i;
 
-	i = 0;
 	cub->image.img = mlx_new_image(cub->mlx, cub->parse.res.w, cub->parse.res.h);
 	cub->image.data = mlx_get_data_addr(cub->image.img,
 		&cub->image.bpp, &cub->image.size_line, &cub->image.endian);
 	cub->cam.z_buff = (double*)malloc(sizeof(double) * cub->parse.res.w);
+	i = 0;
 	while (i < cub->parse.res.w)
 	{
 		delta(cub, i);

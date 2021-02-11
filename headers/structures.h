@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/02/08 14:57:00 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:11:45 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,15 @@ typedef struct		s_player
 
 typedef struct		s_sprite
 {
+	t_vec			trans;
 	t_bin			pos;
+	t_bin			d_s;
+	t_bin			d_e;
+	t_bin			txt;
 	double			dis;
+	int				dim;
 	int				order;
+	int				scr_x;
 }					t_sprite;
 
 typedef struct		s_parse
@@ -139,7 +145,7 @@ typedef struct		s_cub
 	void			*mlx_win;
 	t_keys			keys;
 	t_img			image;
-	t_text			texture[4];
+	t_text			texture[5];
 	t_cam			cam;
 	t_parse			parse;
 }					t_cub;

@@ -23,6 +23,7 @@ void	wall(t_cub *cub);
 ** drawing.c
 */
 
+void	wall_rendering(t_cub *cub, int x, int y, int n);
 void	rendering(t_cub *cub, int n);
 
 /*
@@ -49,7 +50,13 @@ void	rotate(t_cub *cub, double rot_spd);
 int		ray_casting(t_cub *cub);
 
 /*
-** sprites.c
+** sprites_rend.c
+*/
+
+void	sprite_render(t_cub *cub, int i);
+
+/*
+** sprites_calc.c
 */
 
 void	sprites(t_cub *cub);

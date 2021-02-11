@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:20:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/08 17:18:27 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:10:29 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,10 @@ void			map_fill(int fd, t_parse *stru)
 	stru->map = map_convert(map);
 	stru->sprites = sprite_fill(stru);
 	stru->ids |= MP_ID;
+	for (int j = 0; stru->map[j]; j++)
+	{
+		for (int k = 0; stru->map[j][k]; k++)
+			printf("%c", stru->map[j][k]);
+		printf("\n");
+	}
 }

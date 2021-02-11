@@ -48,9 +48,6 @@ int	key_close(t_cub *cub)
 
 int	mv_manager(t_cub *cub)
 {
-	t_vec	pos;
-
-	pos = cub->parse.ply.pos;
 	if (cub->keys.esc)
 		key_close(cub);
 	if (cub->keys.a_k)
@@ -62,8 +59,8 @@ int	mv_manager(t_cub *cub)
 	if (cub->keys.s_k)
 		move(cub, cub->parse.ply.pos, cub->parse.ply.dir, -MOV_SPD);
 	if (cub->keys.l_k)
-		rotate(cub, ROT_SPD);
-	if (cub->keys.r_k)
 		rotate(cub, -ROT_SPD);
+	if (cub->keys.r_k)
+		rotate(cub, ROT_SPD);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/08 15:35:01 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/10 20:42:23 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ static t_player	fill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
 	ret.pos = fill_pos(i, tmp->i + 1);
 	if (line[i] == 'N')
 	{
-		ret.pln.x = -0.6;
+		ret.pln.x = 0.66;
 		ret.dir.y = -1.0;
 	}
 	else if (line[i] == 'S')
 	{
-		ret.pln.x = 0.6;
+		ret.pln.x = -0.66;
 		ret.dir.y = 1.0;
 	}
 	else if (line[i] == 'E')
 	{
-		ret.pln.y = -0.6;
+		ret.pln.y = 0.66;
 		ret.dir.x = 1.0;
 	}
 	else if (line[i] == 'W')
 	{
-		ret.pln.y = 0.6;
+		ret.pln.y = -0.66;
 		ret.dir.x = -1.0;
 	}
 	return (ret);
@@ -64,8 +64,8 @@ void			twod_check(t_mapll *tmp, char *line, int i, t_parse *stru)
 		stru->ply = fill_player(stru, tmp, line, i);
 	else if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
 			|| line[i] == 'W') && (stru->ids & PL_ID))
-		quit("It's a single ply game verify map.", NULL);
-	if (line[i] = '2')
+		quit("It's a single player game verify map.", NULL);
+	if (line[i] == '2')
 		stru->spr_num++;
 	if ((tmp && tmp->line[i] != '1' && !is_valid(tmp->line[i])) ||
 			(line[i + 1] != '1' && !is_valid(line[i + 1])))
