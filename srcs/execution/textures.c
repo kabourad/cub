@@ -10,7 +10,7 @@ static void	check_assign(t_cub *cub, int n, char *path)
 			&(cub->text[n].endian));
 }
 
-void	texture_init(t_cub *cub)
+void		texture_init(t_cub *cub)
 {
 	check_assign(cub, 0, cub->parse.paths.north);
 	check_assign(cub, 1, cub->parse.paths.south);

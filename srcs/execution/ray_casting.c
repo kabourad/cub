@@ -1,10 +1,11 @@
 #include "../../headers/cub.h"
 
-static void	ft_trace(t_cub *cub)
+static void		ft_trace(t_cub *cub)
 {
-	int	i;
+	int		i;
 
-	cub->image.img = mlx_new_image(cub->mlx, cub->parse.res.w, cub->parse.res.h);
+	cub->image.img = mlx_new_image(cub->mlx, cub->parse.res.w,
+			cub->parse.res.h);
 	cub->image.data = mlx_get_data_addr(cub->image.img,
 		&cub->image.bpp, &cub->image.size_line, &cub->image.endian);
 	cub->cam.z_buff = (double*)malloc(sizeof(double) * cub->parse.res.w);
@@ -23,13 +24,13 @@ static void	ft_trace(t_cub *cub)
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image.img, 0, 0);
 }
 
-static int	main_cast(t_cub *cub)
+static int		main_cast(t_cub *cub)
 {
 	mlx_destroy_image(cub->mlx, cub->image.img);
 	mlx_clear_window(cub->mlx, cub->mlx_win);
 	mv_manager(cub);
 	ft_trace(cub);
-	return(0);
+	return (0);
 }
 
 static t_keys	keys_init(void)
@@ -46,7 +47,7 @@ static t_keys	keys_init(void)
 	return (ret);
 }
 
-int			ray_casting(t_cub *cub)
+int				ray_casting(t_cub *cub)
 {
 	cub->mlx = mlx_init();
 	cub->mlx_win = mlx_new_window(cub->mlx, cub->parse.res.w, cub->parse.res.h,

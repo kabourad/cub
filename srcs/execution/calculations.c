@@ -2,7 +2,6 @@
 
 void	delta(t_cub *cub, int i)
 {
-
 	cub->cam.hit = 0;
 	cub->cam.camera = 2 * i / (double)cub->parse.res.w - 1;
 	cub->cam.ray.x = cub->parse.ply.dir.x + cub->parse.ply.pln.x
@@ -81,7 +80,7 @@ void	dda(t_cub *cub)
 void	wall(t_cub *cub)
 {
 	if (cub->cam.side == 0 || cub->cam.side == 2)
-		cub->cam.pwd = (cub->cam.map.x - cub->parse.ply.pos.x + 
+		cub->cam.pwd = (cub->cam.map.x - cub->parse.ply.pos.x +
 				(1 - cub->cam.step.x) / 2) / cub->cam.ray.x;
 	else
 		cub->cam.pwd = (cub->cam.map.y - cub->parse.ply.pos.y +

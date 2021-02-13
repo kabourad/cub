@@ -16,7 +16,7 @@ static void	text_put(t_cub *cub, t_sprite sprite, t_bin iter)
 	cub->text[4].data[index_sprite + 2];
 }
 
-void	sprite_display(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
+void		sprite_disp(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
 {
 	int	d;
 	int	color;
@@ -33,7 +33,7 @@ void	sprite_display(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
 		text_put(cub, sprite, iter);
 }
 
-void	sprite_render(t_cub *cub, int i)
+void		sprite_render(t_cub *cub, int i)
 {
 	t_bin	iter;
 
@@ -51,7 +51,7 @@ void	sprite_render(t_cub *cub, int i)
 			/ cub->text[4].size_line;
 			while (iter.y < cub->parse.sprites[i].d_e.y)
 			{
-				sprite_display(cub, cub->parse.sprites[i], iter, cub->parse.res);
+				sprite_disp(cub, cub->parse.sprites[i], iter, cub->parse.res);
 				iter.y++;
 			}
 		}

@@ -24,7 +24,7 @@ void		pixel_fill(t_cub *cub, int x, int y, int color)
 	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 2] = b;
 }
 
-void	wall_rendering(t_cub *cub, int x, int y, int n)
+void		wall_rendering(t_cub *cub, int x, int y, int n)
 {
 	int		d;
 
@@ -44,7 +44,7 @@ void	wall_rendering(t_cub *cub, int x, int y, int n)
 		+ cub->cam.texture.x * (cub->text[n].bpp / 8) + 2];
 }
 
-void	rendering(t_cub *cub, int n)
+void		rendering(t_cub *cub, int n)
 {
 	int		i;
 

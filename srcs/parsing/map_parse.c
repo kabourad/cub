@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:20:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/13 23:00:18 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/13 23:19:45 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ static t_sprite	*sprite_fill(t_parse *stru)
 		ret = (t_sprite*)malloc(stru->spr_num * sizeof(t_sprite));
 	else
 		return (NULL);
-	i = 0;
+	i = -1;
 	k = 0;
-	while (stru->map[i])
+	while (stru->map[++i])
 	{
-		j = 0;
-		while (stru->map[i][j])
+		j = -1;
+		while (stru->map[i][++j])
 		{
 			if (stru->map[i][j] == '2')
 			{
@@ -97,9 +97,7 @@ static t_sprite	*sprite_fill(t_parse *stru)
 				ret[k].pos.y = i + 0.5;
 				k++;
 			}
-			j++;
 		}
-		i++;
 	}
 	return (ret);
 }
@@ -130,12 +128,5 @@ void			map_fill(int fd, t_parse *stru)
 	stru->map = map_convert(map);
 	stru->sprites = sprite_fill(stru);
 	stru->ids |= MP_ID;
-	if (stru->ids != 1023)
-		quit("No player found.", NULL);
-	for (int j = 0; stru->map[j]; j++)
-	{
-		for (int k = 0; stru->map[j][k]; k++)
-			printf("%c", stru->map[j][k]);
-		printf("\n");
-	}
+	!(stru->ids & PL_ID) ? quit("No player found.", NULL) : 0;
 }
