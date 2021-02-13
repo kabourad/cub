@@ -19,7 +19,7 @@ static void	ft_trace(t_cub *cub)
 		rendering(cub, i);
 		i++;
 	}
-	sprites(cub);
+	cub->parse.spr_num ? sprites(cub) : 0;
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image.img, 0, 0);
 }
 

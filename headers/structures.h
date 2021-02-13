@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/02/11 16:11:45 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:05:52 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ typedef struct		s_cub
 	void			*mlx_win;
 	t_keys			keys;
 	t_img			image;
-	t_text			texture[5];
+	t_text			text[5];
 	t_cam			cam;
 	t_parse			parse;
 }					t_cub;

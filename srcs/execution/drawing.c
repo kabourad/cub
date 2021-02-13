@@ -28,20 +28,20 @@ void	wall_rendering(t_cub *cub, int x, int y, int n)
 {
 	int		d;
 
-	d = y * cub->texture[n].size_line - cub->parse.res.h *
-			cub->texture[n].size_line / 2 + cub->cam.lineheight *
-			cub->texture[n].size_line / 2;
-	cub->cam.texture.y = ((d * cub->texture[n].height) / cub->cam.lineheight)
-		/ cub->texture[n].size_line;
+	d = y * cub->text[n].size_line - cub->parse.res.h *
+			cub->text[n].size_line / 2 + cub->cam.lineheight *
+			cub->text[n].size_line / 2;
+	cub->cam.texture.y = ((d * cub->text[n].height) / cub->cam.lineheight)
+		/ cub->text[n].size_line;
 	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8] =
-		cub->texture[n].data[cub->cam.texture.y * cub->texture[n].size_line
-		+ cub->cam.texture.x * (cub->texture[n].bpp / 8)];
+		cub->text[n].data[cub->cam.texture.y * cub->text[n].size_line
+		+ cub->cam.texture.x * (cub->text[n].bpp / 8)];
 	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 1] =
-		cub->texture[n].data[cub->cam.texture.y * cub->texture[n].size_line
-		+ cub->cam.texture.x * (cub->texture[n].bpp / 8) + 1];
+		cub->text[n].data[cub->cam.texture.y * cub->text[n].size_line
+		+ cub->cam.texture.x * (cub->text[n].bpp / 8) + 1];
 	cub->image.data[y * cub->image.size_line + x * cub->image.bpp / 8 + 2] =
-		cub->texture[n].data[cub->cam.texture.y * cub->texture[n].size_line
-		+ cub->cam.texture.x * (cub->texture[n].bpp / 8) + 2];
+		cub->text[n].data[cub->cam.texture.y * cub->text[n].size_line
+		+ cub->cam.texture.x * (cub->text[n].bpp / 8) + 2];
 }
 
 void	rendering(t_cub *cub, int n)

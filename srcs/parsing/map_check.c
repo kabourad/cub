@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/10 20:42:23 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:17:22 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static t_vec	fill_pos(int a, int b)
 {
 	t_vec	ret;
 
-	ret.x = a;
-	ret.y = b;
+	ret.x = a + 0.5;
+	ret.y = b + 0.5;
 	return (ret);
 }
 

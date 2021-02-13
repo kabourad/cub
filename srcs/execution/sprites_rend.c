@@ -1,23 +1,36 @@
 #include "../../headers/cub.h"
 
-void	sprite_put(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
+static void	text_put(t_cub *cub, t_sprite sprite, t_bin iter)
+{
+	int	index;
+	int index_sprite;
+
+	index = iter.y * cub->image.size_line
+	+ iter.x * cub->image.bpp / 8;
+	index_sprite = sprite.txt.y * cub->text[4].size_line + sprite.txt.x
+	* cub->text[4].bpp / 8;
+	cub->image.data[index] = cub->text[4].data[index_sprite];
+	cub->image.data[index + 1] =
+	cub->text[4].data[index_sprite + 1];
+	cub->image.data[index + 2] =
+	cub->text[4].data[index_sprite + 2];
+}
+
+void	sprite_display(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
 {
 	int	d;
 	int	color;
 	int	index;
 
-	d = iter.y * cub->texture[4].size_line - res.h
-	* cub->texture[4].size_line / 2 + sprite.dim
-	* cub->texture[4].size_line / 2;
-	sprite.txt.y = (int)(d * TEX_HEI / sprite.dim
-	/ cub->texture[4].size_line);
-	index = sprite.txt.y * cub->texture[4].size_line
-	+ sprite.txt.x * cub->texture[4].bpp / 8;
-	color = cub->texture[4].data[index]
-	+ cub->texture[4].data[index + 1]
-	+ cub->texture[4].data[index + 2];
-	if (color != 0x000000)
-		wall_rendering(cub, iter.x, iter.y, 4);
+	d = iter.y * cub->text[4].size_line - res.h * cub->text[4].size_line /
+			2 + sprite.dim * cub->text[4].size_line / 2;
+	sprite.txt.y = (int)(d * TEX_HEI / sprite.dim / cub->text[4].size_line);
+	index = sprite.txt.y * cub->text[4].size_line + sprite.txt.x *
+			cub->text[4].bpp / 8;
+	color = cub->text[4].data[index] + cub->text[4].data[index + 1] +
+		cub->text[4].data[index + 2];
+	if (color != 0)
+		text_put(cub, sprite, iter);
 }
 
 void	sprite_render(t_cub *cub, int i)
@@ -32,13 +45,13 @@ void	sprite_render(t_cub *cub, int i)
 				cub->cam.z_buff[iter.x])
 		{
 			iter.y = cub->parse.sprites[i].d_s.y;
-			cub->parse.sprites[i].txt.x = (int)(cub->texture[4].size_line
+			cub->parse.sprites[i].txt.x = (int)(cub->text[4].size_line
 			* (iter.x - (-cub->parse.sprites[i].dim / 2 +
 			cub->parse.sprites[i].scr_x)) * TEX_WID / cub->parse.sprites[i].dim)
-			/ cub->texture[4].size_line;
+			/ cub->text[4].size_line;
 			while (iter.y < cub->parse.sprites[i].d_e.y)
 			{
-				sprite_put(cub, cub->parse.sprites[i], iter, cub->parse.res);
+				sprite_display(cub, cub->parse.sprites[i], iter, cub->parse.res);
 				iter.y++;
 			}
 		}

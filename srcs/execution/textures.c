@@ -2,12 +2,12 @@
 
 static void	check_assign(t_cub *cub, int n, char *path)
 {
-	if (!(cub->texture[n].img = mlx_xpm_file_to_image(cub->mlx, path,
-			&(cub->texture[n].width), &cub->texture[n].height)))
+	if (!(cub->text[n].img = mlx_xpm_file_to_image(cub->mlx, path,
+			&(cub->text[n].width), &cub->text[n].height)))
 		quit("Impossible to load a texture;\n", NULL);
-	cub->texture[n].data = mlx_get_data_addr(cub->texture[n].img,
-			&(cub->texture[n].bpp), &(cub->texture[n].size_line),
-			&(cub->texture[n].endian));
+	cub->text[n].data = mlx_get_data_addr(cub->text[n].img,
+			&(cub->text[n].bpp), &(cub->text[n].size_line),
+			&(cub->text[n].endian));
 }
 
 void	texture_init(t_cub *cub)

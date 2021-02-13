@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:20:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/10 16:10:29 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/12 16:19:56 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ static t_sprite	*sprite_fill(t_parse *stru)
 	int			j;
 	int			k;
 
-	ret = (t_sprite*)malloc(stru->spr_num * sizeof(t_sprite));
+	if (stru->spr_num)
+		ret = (t_sprite*)malloc(stru->spr_num * sizeof(t_sprite));
+	else
+		return (NULL);
 	i = 0;
 	k = 0;
 	while (stru->map[i])
@@ -90,8 +93,8 @@ static t_sprite	*sprite_fill(t_parse *stru)
 		{
 			if (stru->map[i][j] == '2')
 			{
-				ret[k].pos.x = j;
-				ret[k].pos.y = i;
+				ret[k].pos.x = j + 0.5;
+				ret[k].pos.y = i + 0.5;
 				k++;
 			}
 			j++;

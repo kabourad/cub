@@ -54,7 +54,7 @@ t_vec	transform(t_cub *cub, int i)
 	pln = cub->parse.ply.pln;
 	spr.x = cub->parse.sprites[i].pos.x - cub->parse.ply.pos.x;
 	spr.y = cub->parse.sprites[i].pos.y - cub->parse.ply.pos.y;
-	inv_det = 1.0 / (pln.x * dir.x - pln.y * dir.y);
+	inv_det = 1.0 / (pln.x * dir.y - pln.y * dir.x);
 	ret.x = inv_det * (dir.y * spr.x - dir.x * spr.y);
 	ret.y = inv_det * (pln.x * spr.y - pln.y * spr.x);
 	return (ret);
