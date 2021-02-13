@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:20:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/12 16:19:56 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/13 22:53:08 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ void			map_fill(int fd, t_parse *stru)
 	stru->map = map_convert(map);
 	stru->sprites = sprite_fill(stru);
 	stru->ids |= MP_ID;
+	if (stru->ids != 512)
+		quit("No player found.", NULL);
 	for (int j = 0; stru->map[j]; j++)
 	{
 		for (int k = 0; stru->map[j][k]; k++)
