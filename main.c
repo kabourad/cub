@@ -33,7 +33,12 @@ int			main(int argc, char **argv)
 {
 	t_cub	cub;
 
+	cub.save = 0;
 	if (argc < 2 || argc > 3)
+		return (ft_usage());
+	else if (argc == 3 && !ft_strcmp(argv[2], "--save"))
+		cub.save = 1;
+	else if (argc == 3 && ft_strcmp(argv[2], "--save"))
 		return (ft_usage());
 	ft_extention(argv[1], ".cub");
 	cub.parse = parsing(argv[1]);

@@ -21,7 +21,10 @@ static void		ft_trace(t_cub *cub)
 		i++;
 	}
 	cub->parse.spr_num ? sprites(cub) : 0;
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image.img, 0, 0);
+	if (cub->save)
+		save(cub);
+	else
+		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->image.img, 0, 0);
 }
 
 static int		main_cast(t_cub *cub)

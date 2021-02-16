@@ -67,6 +67,10 @@ typedef struct		s_sprite
 	int				scr_x;
 }					t_sprite;
 
+/*
+** Parse structure
+*/
+
 typedef struct		s_parse
 {
 	int				ids;
@@ -86,6 +90,10 @@ typedef struct		s_mapll
 	int				i;
 	struct s_mapll	*next;
 }					t_mapll;
+
+/*
+** Image structure
+*/
 
 typedef struct		s_img
 {
@@ -118,6 +126,10 @@ typedef struct		s_keys
 	int				esc;
 }					t_keys;
 
+/*
+** Camera structure
+*/
+
 typedef	struct		s_cam
 {
 	t_vec			sidedist;
@@ -139,8 +151,13 @@ typedef	struct		s_cam
 	int				drawend;
 }					t_cam;
 
+/*
+** Cub structure
+*/
+
 typedef struct		s_cub
 {
+	int				save;
 	void			*mlx;
 	void			*mlx_win;
 	t_keys			keys;
@@ -149,5 +166,15 @@ typedef struct		s_cub
 	t_cam			cam;
 	t_parse			parse;
 }					t_cub;
+
+/*
+** Bmp structure
+*/
+
+typedef struct		s_bmp
+{
+	
+}					t_bmp;
+
 
 #endif
