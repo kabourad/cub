@@ -1,46 +1,46 @@
 #include "../../headers/cub.h"
 
-void	sort_sprites(t_cub *cub)
-{
-	t_sprite	tmp;
-	int			i;
-	int			j;
+// void	sort_sprites(t_cub *cub)
+// {
+// 	t_sprite	tmp;
+// 	int			i;
+// 	int			j;
 
-	i = 0;
-	tmp = cub->parse.sprites[0];
-	while (i < cub->parse.spr_num)
-	{
-		j = i + 1;
-		while (j < cub->parse.spr_num)
-		{
-			if (cub->parse.sprites[i].dis < cub->parse.sprites[j].dis)
-			{
-				tmp = cub->parse.sprites[i];
-				cub->parse.sprites[i] = cub->parse.sprites[j];
-				cub->parse.sprites[j] = tmp;
-			}
-			j++;
-		}
-		i++;
-	}
-}
+// 	i = 0;
+// 	tmp = cub->parse.sprites[0];
+// 	while (i < cub->parse.spr_num)
+// 	{
+// 		j = i;
+// 		while (j < cub->parse.spr_num)
+// 		{
+// 			if (cub->parse.sprites[i].dis < cub->parse.sprites[j].dis)
+// 			{
+// 				tmp = cub->parse.sprites[i];
+// 				cub->parse.sprites[i] = cub->parse.sprites[j];
+// 				cub->parse.sprites[j] = tmp;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
-void	sprite_dist_fill(t_cub *cub)
-{
-	t_vec		ppos;
-	t_bin		spos;
-	int			i;
+// void	sprite_dist_fill(t_cub *cub)
+// {
+// 	t_vec		ppos;
+// 	t_bin		spos;
+// 	int			i;
 
-	i = 0;
-	ppos = cub->parse.ply.pos;
-	spos = cub->parse.sprites[i].pos;
-	while (i < cub->parse.spr_num)
-	{
-		cub->parse.sprites[i].dis = ((ppos.x - spos.x) * (ppos.x - spos.x) +
-				(ppos.y - spos.y) * (ppos.y - spos.y));
-		i++;
-	}
-}
+// 	i = 0;
+// 	ppos = cub->parse.ply.pos;
+// 	spos = cub->parse.sprites[i].pos;
+// 	while (i < cub->parse.spr_num)
+// 	{
+// 		cub->parse.sprites[i].dis = ((ppos.x - spos.x) * (ppos.x - spos.x) +
+// 				(ppos.y - spos.y) * (ppos.y - spos.y));
+// 		i++;
+// 	}
+// }
 
 t_vec	transform(t_cub *cub, int i)
 {
@@ -79,16 +79,48 @@ t_bin	tips(int dim, int ssx, int w, int h)
 	return (ret);
 }
 
+void	sprite_sort(t_cub *cub)
+{
+	t_sprite	tmp;
+	int			i;
+	int			j;
+
+	i = 0;
+	while ( i < cub->parse.spr_num)
+	{
+		j = i + 1;
+		while (j < cub->parse.spr_num)
+		{
+			if (cub->parse.sprites[i].trans.y < cub->parse.sprites[j].trans.y)
+			{
+				tmp = cub->parse.sprites[i];
+				cub->parse.sprites[i] = cub->parse.sprites[j];
+				cub->parse.sprites[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	sprites(t_cub *cub)
 {
 	int			i;
 
-	sprite_dist_fill(cub);
-	sort_sprites(cub);
+	// sprite_dist_fill(cub);
+	// printf("[0]: %.2f [1]: %.2f\t", cub->parse.sprites[0].trans.y, cub->parse.sprites[1].trans.y);
+	// sort_sprites(cub);
+	// printf("[0]: %.2f [1]: %.2f\n", cub->parse.sprites[0].trans.y, cub->parse.sprites[1].trans.y);
 	i = 0;
 	while (i < cub->parse.spr_num)
 	{
 		cub->parse.sprites[i].trans = transform(cub, i);
+		i++;
+	}
+	sprite_sort(cub);
+	i = 0;
+	while (i < cub->parse.spr_num)
+	{
 		cub->parse.sprites[i].scr_x = (int)((cub->parse.res.w / 2) *
 				(1 + cub->parse.sprites[i].trans.x /
 				cub->parse.sprites[i].trans.y));

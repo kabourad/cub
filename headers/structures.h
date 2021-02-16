@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/02/12 15:05:52 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/15 17:01:23 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct		s_player
 typedef struct		s_sprite
 {
 	t_vec			trans;
-	t_bin			pos;
+	t_vec			pos;
 	t_bin			d_s;
 	t_bin			d_e;
 	t_bin			txt;
