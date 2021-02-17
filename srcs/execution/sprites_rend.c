@@ -16,7 +16,7 @@ static void	text_put(t_cub *cub, t_sprite sprite, t_bin iter)
 	cub->text[4].data[index_sprite + 2];
 }
 
-void		sprite_disp(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
+static void	sprite_disp(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
 {
 	int	d;
 	int	color;
