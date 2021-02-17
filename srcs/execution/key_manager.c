@@ -40,6 +40,7 @@ int	key_release(int keycode, t_cub *cub)
 
 int	key_close(t_cub *cub)
 {
+	clear_game(cub);
 	if (cub->mlx_win)
 		mlx_destroy_window(cub->mlx, cub->mlx_win);
 	exit(0);

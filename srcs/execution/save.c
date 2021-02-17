@@ -47,5 +47,6 @@ void			save(t_cub *cub)
 	write(fd, cub->image.data, image_size * 4);
 	close(fd);
 	ft_putstr_fd("File saved successfully\n", 1);
+	clear_game(cub);
 	exit(0);
 }

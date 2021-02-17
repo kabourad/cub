@@ -6,14 +6,14 @@
 /*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:45:39 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/17 16:14:02 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/17 17:30:23 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/cub.h"
+#include "../../headers/cub.h"
 
 
-void	free_map(t_cub *cub)
+static void	free_map(t_cub *cub)
 {
 	int	i;
 
@@ -28,11 +28,19 @@ void	free_map(t_cub *cub)
 
 void	clear_game(t_cub *cub)
 {
-	free(cub->parse.paths.north);
-	free(cub->parse.paths.south);
-	free(cub->parse.paths.east);
-	free(cub->parse.paths.west);
-	free(cub->parse.paths.sprite);
-	free(cub->parse.sprites);
-	free_map(cub);
+	int		i;
+
+	cub->parse.paths.north ? free(cub->parse.paths.north) : 0;
+	cub->parse.paths.south ? free(cub->parse.paths.south) : 0;
+	cub->parse.paths.east ? free(cub->parse.paths.east) : 0;
+	cub->parse.paths.west ? free(cub->parse.paths.west) : 0;
+	cub->parse.paths.sprite ? free(cub->parse.paths.sprite) : 0;
+	cub->parse.map ? free_map(cub) : 0;
+	if (cub->mlx)
+	{
+		cub->image.img ? mlx_destroy_image(cub->mlx, cub->image.img) : 0;
+		i = 0;
+		while (i < 5)
+			cub->text[i].img ? mlx_destroy_image(cub->mlx, cub->text[i++].img) : 0;
+	}
 }
