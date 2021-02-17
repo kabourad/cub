@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:39:43 by awali-al          #+#    #+#             */
-/*   Updated: 2021/02/15 17:01:23 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/16 18:03:45 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,10 +171,31 @@ typedef struct		s_cub
 ** Bmp structure
 */
 
-typedef struct		s_bmp
+# define HEADER_SIZE 54
+
+typedef	struct	s_bitmap_file
 {
-	
-}					t_bmp;
+	unsigned char			bitmap_type[2];
+	int						file_size;
+	short					reserved1;
+	short					reserved2;
+	unsigned int			offset_bits;
+}				t_bitmap_file;
+
+typedef	struct	s_bitmap_image
+{
+	unsigned int	size_header;
+	unsigned int	width;
+	unsigned int	height;
+	short int		planes;
+	short int		bit_count;
+	unsigned int	compression;
+	unsigned int	image_size;
+	unsigned int	ppm_x;
+	unsigned int	ppm_y;
+	unsigned int	clr_used;
+	unsigned int	clr_important;
+}				t_bitmap_image;
 
 
 #endif

@@ -46,20 +46,26 @@ void	rotate(t_cub *cub, double rot_spd);
 ** ray_casting.c
 */
 
-// int		draw_grid(t_cub *milix);
+void	ft_trace(t_cub *cub);
 int		ray_casting(t_cub *cub);
 
 /*
-** sprites_rend.c
+** save.c
 */
 
-void	sprite_render(t_cub *cub, int i);
+void	save(t_cub *cub);
 
 /*
 ** sprites_calc.c
 */
 
 void	sprites(t_cub *cub);
+
+/*
+** sprites_rend.c
+*/
+
+void	sprite_render(t_cub *cub, int i);
 
 /*
 ** textures.c
