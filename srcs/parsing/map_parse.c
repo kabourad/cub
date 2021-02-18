@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:20:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/15 16:57:33 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/18 03:32:46 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_mapll	*new_node(char *line, t_mapll *prv)
 	return (ret);
 }
 
-static void		check_store(char *line, t_parse *stru, t_mapll **map)
+static void		check_store(char *line, t_cub *cub, t_mapll **map)
 {
 	t_mapll	*tmp;
 	int		i;
@@ -38,11 +38,11 @@ static void		check_store(char *line, t_parse *stru, t_mapll **map)
 	while (line[i])
 	{
 		if (line[i] == ' ')
-			space_check(tmp, line, i);
+			space_check(tmp, line, i, cub);
 		else if (is_valid(line[i]))
-			twod_check(tmp, line, i, stru);
+			twod_check(tmp, line, i, cub);
 		else if (line[i] != '1')
-			quit("Error\nInvalid map", NULL);
+			quit("Error\nInvalid map", NULL, cub);
 		i++;
 	}
 	if (tmp)
@@ -57,20 +57,25 @@ static char		**map_convert(t_mapll *map)
 	char	**ret;
 	int		i;
 
-	i = ft_listlen(map) + 1;
-	ret = (char**)malloc(sizeof(char*) * i);
-	ret[i - 1] = NULL;
-	i = 0;
-	while (map)
+	if (map)
 	{
-		tmp = map->next;
-		ret[i] = ft_strdup(map->line);
-		ft_strdel(&map->line);
-		free(map);
-		map = tmp;
-		i++;
+		i = ft_listlen(map) + 1;
+		ret = (char**)malloc(sizeof(char*) * i);
+		ret[i - 1] = NULL;
+		i = 0;
+		while (map)
+		{
+			tmp = map->next;
+			ret[i] = ft_strdup(map->line);
+			free(map->line);
+			free(map);
+			map = tmp;
+			i++;
+		}
+		return (ret);
 	}
-	return (ret);
+	else
+		return (NULL);
 }
 
 static t_sprite	*sprite_fill(t_parse *stru)
@@ -102,31 +107,31 @@ static t_sprite	*sprite_fill(t_parse *stru)
 	return (ret);
 }
 
-void			map_fill(int fd, t_parse *stru)
+void			map_fill(int fd, t_cub *cub)
 {
 	t_mapll		*map;
 	char		*line;
 	int			n;
-	int			i;
 
 	line = NULL;
 	map = NULL;
-	i = 0;
 	while ((n = get_next_line(fd, &line)) >= 0)
 	{
 		if (line && line[0])
-		{
-			check_store(line, stru, &map);
-			ft_strdel(&line);
-		}
+			check_store(line, cub, &map);
 		else if ((!line || !line[0]) && map)
-			quit("The map shouldn't contain empty lines", NULL);
+		{
+			line ? free(line) : 0;
+			quit("The map shouldn't contain empty lines", NULL, cub);
+		}
 		if (!n)
 			break ;
+		line ? free(line) : 0;
 	}
-	check_last_line(map);
-	stru->map = map_convert(map);
-	stru->sprites = sprite_fill(stru);
-	stru->ids |= MP_ID;
-	!(stru->ids & PL_ID) ? quit("No player found.", NULL) : 0;
+	line ? free(line) : 0;
+	check_last_line(map) ? quit("Invalid map.", NULL, cub) : 0;
+	cub->parse.map = map_convert(map);
+	cub->parse.sprites = sprite_fill(&(cub->parse));
+	cub->parse.ids |= MP_ID;
+	!(cub->parse.ids & PL_ID) ? quit("No player found.", NULL, cub) : 0;
 }

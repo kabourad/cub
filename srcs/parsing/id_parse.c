@@ -6,33 +6,33 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:06:31 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/02 16:52:29 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/18 01:28:33 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub.h"
 
-static void	identifier_fill(int id, char **array, t_parse *stru)
+static void	identifier_fill(int id, char **array, t_cub *cub)
 {
 	if (id == R_ID)
-		stru->res = res_fill(array);
+		cub->parse.res = res_fill(array);
 	else if (id == F_ID)
-		stru->floor = color_fill(array[1]);
+		cub->parse.floor = color_fill(array[1], cub);
 	else if (id == C_ID)
-		stru->ceiling = color_fill(array[1]);
+		cub->parse.ceiling = color_fill(array[1], cub);
 	else if (id == NO_ID)
-		stru->paths.north = path_fill(array[1]);
+		cub->parse.paths.north = path_fill(array[1], cub);
 	else if (id == SO_ID)
-		stru->paths.south = path_fill(array[1]);
+		cub->parse.paths.south = path_fill(array[1], cub);
 	else if (id == EA_ID)
-		stru->paths.east = path_fill(array[1]);
+		cub->parse.paths.east = path_fill(array[1], cub);
 	else if (id == WE_ID)
-		stru->paths.west = path_fill(array[1]);
+		cub->parse.paths.west = path_fill(array[1], cub);
 	else if (id == S_ID)
-		stru->paths.sprite = path_fill(array[1]);
+		cub->parse.paths.sprite = path_fill(array[1], cub);
 }
 
-static void	id_seek_n_fill(char *line, t_parse *stru)
+static void	id_seek_n_fill(char *line, t_cub *cub)
 {
 	char	**array;
 	int		id;
@@ -40,28 +40,37 @@ static void	id_seek_n_fill(char *line, t_parse *stru)
 
 	array = ft_split_whitespaces(line);
 	ln = ft_arrlen(array);
-	id = is_id(array[0], stru->ids);
+	id = is_id(array[0], cub->parse.ids);
 	if (!id || (id == 1 && ln != 3) || (id != 1 && ln != 2))
-		quit("Identifier issue.", NULL);
+	{
+		array ? ft_arrdel(&array) : 0;
+		quit("Identifier issue.", NULL, cub);
+	}
 	if (id == MP_ID)
-		quit("Map must be last.", NULL);
-	identifier_fill(id, array, stru);
-	stru->ids |= id;
+	{
+		array ? ft_arrdel(&array) : 0;
+		quit("Map must be last.", NULL, cub);
+	}
+	identifier_fill(id, array, cub);
+	cub->parse.ids |= id;
 	array ? ft_arrdel(&array) : 0;
 }
 
-void		id_fill(int fd, t_parse *stru)
+void		id_fill(int fd, t_cub *cub)
 {
 	char	*line;
 	int		n;
 
 	line = NULL;
-	while (stru->ids < 255)
+	while (cub->parse.ids < 255)
 	{
 		if ((n = get_next_line(fd, &line)) > 0 && line && line[0])
-			id_seek_n_fill(line, stru);
-		if (!n && stru->ids < 255)
-			quit("Incomplete file", NULL);
+			id_seek_n_fill(line, cub);
+		if (!n && cub->parse.ids < 255)
+		{
+			line ? ft_strdel(&line) : 0;
+			quit("Incomplete file", NULL, cub);
+		}
 		line ? ft_strdel(&line) : 0;
 	}
 }

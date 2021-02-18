@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 17:22:03 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/17 17:22:04 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/18 01:41:00 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	delta(t_cub *cub, int i);
 void	side_distance(t_cub *cub);
 void	dda(t_cub *cub);
 void	wall(t_cub *cub);
+
+/*
+** clear_game.c
+*/
+
+void	clear_game(t_cub *cub);
 
 /*
 ** drawing.c

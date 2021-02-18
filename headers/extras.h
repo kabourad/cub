@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extras.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:47:57 by awali-al          #+#    #+#             */
-/*   Updated: 2021/02/17 17:37:18 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/18 00:48:14 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void		ft_arrdel(char ***arr);
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_listlen(t_mapll *map);
 char		**ft_split_whitespaces(char const *s);
-void		quit(char *msg, char *path);
+void		quit(char *msg, char *path, t_cub *cub);
 
 #endif

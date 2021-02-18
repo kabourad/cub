@@ -35,26 +35,11 @@ static int		main_cast(t_cub *cub)
 	return (0);
 }
 
-static t_keys	keys_init(void)
-{
-	t_keys	ret;
-
-	ret.esc = 0;
-	ret.w_k = 0;
-	ret.a_k = 0;
-	ret.s_k = 0;
-	ret.d_k = 0;
-	ret.l_k = 0;
-	ret.r_k = 0;
-	return (ret);
-}
-
 int				ray_casting(t_cub *cub)
 {
 	cub->mlx = mlx_init();
 	cub->mlx_win = mlx_new_window(cub->mlx, cub->parse.res.w, cub->parse.res.h,
 			"CUB3D");
-	cub->keys = keys_init();
 	texture_init(cub);
 	ft_trace(cub);
 	mlx_hook(cub->mlx_win, 2, 0, key_press, cub);

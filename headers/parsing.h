@@ -6,7 +6,7 @@
 /*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:42:30 by awali-al          #+#    #+#             */
-/*   Updated: 2021/01/29 23:34:15 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/18 01:11:02 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 //fills.c
 
 t_res		res_fill(char **array);
-t_rgb		color_fill(char *str);
-char		*path_fill(char *str);
+t_rgb		color_fill(char *str, t_cub *cub);
+char		*path_fill(char *str, t_cub *cub);
 
 //id_extra.c
 
@@ -38,7 +38,7 @@ int			is_id(char *c, int ids);
 
 //id_parse.c
 
-void		id_fill(int fd, t_parse *stru);
+void		id_fill(int fd, t_cub *cub);
 
 //map_check_extra.c
 
@@ -46,13 +46,13 @@ int			is_valid(char c);
 
 //map_check.c
 
-void		space_check(t_mapll *tmp, char *line, int i);
-void		twod_check(t_mapll *tmp, char *line, int i, t_parse *stru);
-void		check_last_line(t_mapll *ptr);
+void		space_check(t_mapll *tmp, char *line, int i, t_cub *cub);
+void		twod_check(t_mapll *tmp, char *line, int i, t_cub *cub);
+int			check_last_line(t_mapll *ptr);
 
 //map_parse.c
 
-void		map_fill(int fd, t_parse *stru);
+void		map_fill(int fd, t_cub *cub);
 
 //parse_init.c
 
@@ -60,6 +60,6 @@ t_parse		stru_init(void);
 
 //parsing.c
 
-t_parse		parsing(char *path);
+void		parsing(char *path, t_cub *cub);
 
 #endif

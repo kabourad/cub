@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/13 22:46:03 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/18 00:59:30 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,29 @@ static t_player	fill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
 	return (ret);
 }
 
-void			space_check(t_mapll *tmp, char *line, int i)
+void			space_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 {
 	if ((tmp && tmp->line[i] != '1' && tmp->line[i] != ' ') ||
 			(line[i + 1] != '1' && line[i + 1] != ' '))
-		quit("Error\nInvalid map", NULL);
+		quit("Error\nInvalid map", NULL, cub);
 }
 
-void			twod_check(t_mapll *tmp, char *line, int i, t_parse *stru)
+void			twod_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 {
 	if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-			&& !(stru->ids & PL_ID))
-		stru->ply = fill_player(stru, tmp, line, i);
+			&& !(cub->parse.ids & PL_ID))
+		cub->parse.ply = fill_player(&(cub->parse), tmp, line, i);
 	else if ((line[i] == 'N' || line[i] == 'S' || line[i] == 'E'
-			|| line[i] == 'W') && (stru->ids & PL_ID))
-		quit("It's a single player game verify map.", NULL);
+			|| line[i] == 'W') && (cub->parse.ids & PL_ID))
+		quit("It's a single player game verify map.", NULL, cub);
 	if (line[i] == '2')
-		stru->spr_num++;
+		cub->parse.spr_num++;
 	if ((tmp && tmp->line[i] != '1' && !is_valid(tmp->line[i])) ||
 			(line[i + 1] != '1' && !is_valid(line[i + 1])))
-		quit("Invalid map.", NULL);
+		quit("Invalid map.", NULL, cub);
 }
 
-void			check_last_line(t_mapll *ptr)
+int				check_last_line(t_mapll *ptr)
 {
 	t_mapll	*tmp;
 	int		i;
@@ -85,7 +85,8 @@ void			check_last_line(t_mapll *ptr)
 	while (tmp->line[i])
 	{
 		if (tmp->line[i] != '1' && tmp->line[i] != ' ')
-			quit("Invalid map.", NULL);
+			return (1);
 		i++;
 	}
+	return (0);
 }

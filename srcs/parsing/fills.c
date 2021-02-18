@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fills.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 22:49:51 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/17 17:37:37 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/18 01:34:45 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,37 @@ t_res	res_fill(char **array)
 	return (ret);
 }
 
-t_rgb	color_fill(char *str)
+t_rgb	color_fill(char *str, t_cub *cub)
 {
 	char	**arr;
 	t_rgb	ret;
 
 	arr = ft_split(str, ',');
 	if (ft_arrlen(arr) != 3)
-		quit("Color needs to be in rgb format", NULL);
-	ret.r = ft_atoi(arr[0] + 1);
-	ret.r > 255 || ret.r < 0 ? quit("Incorrect red color value", NULL) : 0;
+	{
+		arr ? ft_arrdel(&arr) : 0;
+		quit("Color needs to be in rgb format", NULL, cub);
+	}
+	ret.r = ft_atoi(arr[0]);
 	ret.g = ft_atoi(arr[1]);
-	ret.g > 255 || ret.g < 0 ? quit("Incorrect blue color value", NULL) : 0;
 	ret.b = ft_atoi(arr[2]);
-	ret.b > 255 || ret.b < 0 ? quit("Incorrect green color value", NULL) : 0;
+	if (ret.r > 255 || ret.r < 0 || ret.g > 255 || ret.g < 0 || ret.b > 255 ||
+			ret.b < 0)
+	{
+		arr ? ft_arrdel(&arr) : 0;
+		quit("Incorrect color value", NULL, cub);
+	}
 	arr ? ft_arrdel(&arr) : 0;
 	return (ret);
 }
 
-char	*path_fill(char *str)
+char	*path_fill(char *str, t_cub *cub)
 {
 	int		fd;
 
-	ft_extention(str, ".xpm");
+	ft_extention(str, ".xpm") ? quit("Invalid extention: ", str, cub) : 0;
 	if ((fd = open(str, O_RDONLY)) == -1)
-		quit("ERROR\ncouldn't open file: ", str);
+		quit("ERROR\ncouldn't open file: ", str, cub);
 	close(fd);
 	return (ft_strdup(str));
 }

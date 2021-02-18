@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_game.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 17:22:17 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/17 17:23:35 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/18 01:40:25 by awali-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "structures.h"
 
-void	clear_game(t_cub *cub);
+
 
 #endif

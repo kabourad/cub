@@ -3,7 +3,7 @@
 static	void	init_image_header(t_bitmap_image *bih, t_cub *cub,
 int file_size)
 {
-	int ppm;
+	int 			ppm;
 
 	ppm = 96 * 39.375;
 	bih->size_header = sizeof(t_bitmap_image);

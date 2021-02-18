@@ -2,8 +2,8 @@
 
 static void	text_put(t_cub *cub, t_sprite sprite, t_bin iter)
 {
-	int	index;
-	int index_sprite;
+	int		index;
+	int 	index_sprite;
 
 	index = iter.y * cub->image.size_line
 	+ iter.x * cub->image.bpp / 8;
@@ -18,9 +18,9 @@ static void	text_put(t_cub *cub, t_sprite sprite, t_bin iter)
 
 static void	sprite_disp(t_cub *cub, t_sprite sprite, t_bin iter, t_res res)
 {
-	int	d;
-	int	color;
-	int	index;
+	int		d;
+	int		color;
+	int		index;
 
 	d = iter.y * cub->text[4].size_line - res.h * cub->text[4].size_line /
 			2 + sprite.dim * cub->text[4].size_line / 2;
