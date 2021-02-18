@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:04:43 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/18 03:00:06 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:36:45 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			main(int argc, char **argv)
 		return (ft_usage());
 	if (ft_extention(argv[1], ".cub"))
 		quit("Invalid extention: ", argv[1], &cub);
-	parsing("aot.cub", &cub);
+	parsing(argv[1], &cub);
 	ray_casting(&cub);
 	return (0);
 }

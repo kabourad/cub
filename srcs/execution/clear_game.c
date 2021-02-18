@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:45:39 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/18 02:25:32 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:25:03 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	clear_game(t_cub *cub)
 	cub->parse.sprites ? free(cub->parse.sprites) : 0;
 	if (cub->mlx)
 	{
-		cub->image.img ? mlx_destroy_image(cub->mlx, cub->image.img) : 0;
+		// cub->image.img ? mlx_destroy_image(cub->mlx, cub->image.img) : 0;
 		i = 0;
 		while (i < 5)
 			cub->text[i].img ? mlx_destroy_image(cub->mlx, cub->text[i++].img) :
