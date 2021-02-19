@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/18 01:10:36 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/19 11:06:41 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include "execution.h"
 # include "parsing.h"
 # include "structures.h"
-# include "clear_game.h"
 # include <math.h>
 # include <fcntl.h>
 

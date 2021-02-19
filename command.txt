@@ -1,2 +1,0 @@
-gcc main.c srcs/execution/*.c srcs/parsing/*.c srcs/extras/*.c libft/libft.a mlx_old/libmlx.a -framework OpenGL -framework AppKit -o cub
-while true; do leaks cub; sleep 1; clear; done

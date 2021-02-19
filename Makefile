@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kabourad <kabourad@student.1337.ma>        +#+  +:+       +#+         #
+#    By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/18 16:54:13 by kabourad          #+#    #+#              #
-#    Updated: 2021/02/18 17:07:23 by kabourad         ###   ########.fr        #
+#    Updated: 2021/02/19 11:07:15 by kabourad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(EXEC)
 	make fclean -C libft
 
 re: fclean all

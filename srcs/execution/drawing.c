@@ -28,6 +28,8 @@ void		wall_rendering(t_cub *cub, int x, int y, int n)
 {
 	int		d;
 
+	// if (n == 1 || n == 3)
+	// 	x = cub->cam.texture.x - x;
 	d = y * cub->text[n].size_line - cub->parse.res.h *
 			cub->text[n].size_line / 2 + cub->cam.lineheight *
 			cub->text[n].size_line / 2;
