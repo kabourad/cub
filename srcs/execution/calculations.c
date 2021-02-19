@@ -96,11 +96,11 @@ void	wall(t_cub *cub)
 		cub->cam.wallx = cub->parse.ply.pos.y + cub->cam.pwd * cub->cam.ray.y;
 	else
 		cub->cam.wallx = cub->parse.ply.pos.x + cub->cam.pwd * cub->cam.ray.x;
-	cub->cam.wallx -= floor((cub->cam.wallx));
+	cub->cam.wallx -= floor(cub->cam.wallx);
 	cub->cam.texture.x = (int)(cub->cam.wallx * (double)(TEX_WID));
-	if (cub->cam.side == 0 && cub->cam.ray.x > 0)
-		cub->cam.texture.x = TEX_WID - cub->cam.texture.x - 1;
-	if (cub->cam.side == 1 && cub->cam.ray.y < 0)
+	if (cub->cam.side == 1 || cub->cam.side == 2)
+		cub->cam.texture.x = cub->cam.texture.x - 1;
+	if (cub->cam.side == 3 || cub->cam.side == 0)
 		cub->cam.texture.x = TEX_WID - cub->cam.texture.x - 1;
 	cub->cam.texstep = 1.0 * TEX_HEI / cub->cam.lineheight;
 }

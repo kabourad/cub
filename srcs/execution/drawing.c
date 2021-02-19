@@ -28,8 +28,6 @@ void		wall_rendering(t_cub *cub, int x, int y, int n)
 {
 	int		d;
 
-	// if (n == 1 || n == 3)
-	// 	x = cub->cam.texture.x - x;
 	d = y * cub->text[n].size_line - cub->parse.res.h *
 			cub->text[n].size_line / 2 + cub->cam.lineheight *
 			cub->text[n].size_line / 2;
@@ -59,13 +57,13 @@ void		rendering(t_cub *cub, int n)
 			pixel_fill(cub, n, i, rgb(cub->parse.ceiling));
 		if (i >= cub->cam.drawstart && i <= cub->cam.drawend)
 		{
-			if (cub->cam.side == 0)
+			if (cub->cam.side == 2)
 				wall_rendering(cub, n, i, 2);
-			else if (cub->cam.side == 1)
-				wall_rendering(cub, n, i, 3);
-			else if (cub->cam.side == 2)
-				wall_rendering(cub, n, i, 0);
 			else if (cub->cam.side == 3)
+				wall_rendering(cub, n, i, 3);
+			else if (cub->cam.side == 0)
+				wall_rendering(cub, n, i, 0);
+			else if (cub->cam.side == 1)
 				wall_rendering(cub, n, i, 1);
 		}
 		if (i > cub->cam.drawend)
