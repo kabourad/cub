@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/19 11:06:41 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/20 12:35:05 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 
 # include "../libft/libft.h"
-# include "../mlx_old/mlx.h"
+# include "../mlx/mlx.h"
 # include "extras.h"
 # include "execution.h"
 # include "parsing.h"

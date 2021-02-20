@@ -4,15 +4,15 @@ NO texture/robot.xpm
 
 SO texture/mario.xpm
 
-WE texture/window.xpm
+WE texture/wall_cluster.xpm
 
 EA texture/geek.xpm
 
 S texture/post.xpm
 
-C 109,150,205
+F 190,190,190
 
-F 31,52,47
+C 79,79,79
 
 111111111111111111111111
 100000011111111110000001

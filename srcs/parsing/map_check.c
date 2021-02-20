@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/18 00:59:30 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/20 15:26:02 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,13 @@ static t_player	fill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
 
 void			space_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 {
-	if ((tmp && tmp->line[i] != '1' && tmp->line[i] != ' ') ||
-			(line[i + 1] != '1' && line[i + 1] != ' '))
-		quit("Error\nInvalid map", NULL, cub);
+	if (tmp &&  tmp->line[i] && tmp->line[i] != '1' && tmp->line[i] != ' ')
+	{
+		printf("tmp->line[%d]: |%c| |%c|\n", tmp->line[i], line[i]);
+		quit("Error\nInvalid map 1", NULL, cub);
+	}
+	if (line[i + 1] != '1' && line[i + 1] != ' ' && line[i + 1] != '\0')
+		quit("Error\nInvalid map 2", NULL, cub);
 }
 
 void			twod_check(t_mapll *tmp, char *line, int i, t_cub *cub)
@@ -68,23 +72,27 @@ void			twod_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 	if (line[i] == '2')
 		cub->parse.spr_num++;
 	if ((tmp && tmp->line[i] != '1' && !is_valid(tmp->line[i])) ||
-			(line[i + 1] != '1' && !is_valid(line[i + 1])))
+			(line[i + 1] != '1' && !is_valid(line[i + 1])) || (is_valid(line[i]) && !i))
 		quit("Invalid map.", NULL, cub);
 }
 
 int				check_last_line(t_mapll *ptr)
 {
 	t_mapll	*tmp;
+	t_mapll	*prv;
 	int		i;
 
 	i = 0;
 	tmp = ptr;
 	while (tmp->next)
+	{
+		prv = tmp;
 		tmp = tmp->next;
+	}
 	i = 0;
 	while (tmp->line[i])
 	{
-		if (tmp->line[i] != '1' && tmp->line[i] != ' ')
+		if ((tmp->line[i] != '1' && tmp->line[i] != ' ') || (prv->line[i + 1] && !tmp->line[i + 1]))
 			return (1);
 		i++;
 	}

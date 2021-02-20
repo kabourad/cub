@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fills.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: awali-al <awali-al@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 22:49:51 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/18 01:34:45 by awali-al         ###   ########.fr       */
+/*   Updated: 2021/02/20 14:11:53 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ t_res	res_fill(char **array)
 
 	ret.w = ft_atoi(array[1]);
 	ret.h = ft_atoi(array[2]);
+	if (ret.w > 2560 || ret.w < 0)
+	{
+		ret.w = 2560;
+		ret.h = 1440;
+	}
+	if (ret.h > 1440 || ret.h < 0)
+	{
+		ret.w = 2560;
+		ret.h = 1440;
+	}
 	return (ret);
 }
 

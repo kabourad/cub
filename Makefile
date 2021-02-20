@@ -6,19 +6,17 @@
 #    By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/18 16:54:13 by kabourad          #+#    #+#              #
-#    Updated: 2021/02/19 11:07:15 by kabourad         ###   ########.fr        #
+#    Updated: 2021/02/20 14:48:17 by kabourad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME     = cub3D.a
-EXEC    = cub3D
-CC      = gcc
-CFLAGS  = -Wall -Werror -Wextra
-LIBFT = libft/libft.a
-LIBS     = -lmlx -framework OpenGL -framework AppKit -lm
+MLX = -lmlx -lm -framework OpenGL -framework AppKit
+#MLX = -I /usr/include -g -L /usr/lib -lX11 -lmlx -lXext -lm -fsanitize=address
 
-SRC = srcs/execution/calculations.c srcs/execution/clear_game.c \
+NAME = cub3D
+
+SRCS = srcs/execution/calculations.c srcs/execution/clear_game.c \
 		srcs/execution/drawing.c srcs/execution/key_manager.c \
 		srcs/execution/movements.c srcs/execution/ray_casting.c \
 		srcs/execution/save.c srcs/execution/sprites_calc.c \
@@ -31,30 +29,38 @@ SRC = srcs/execution/calculations.c srcs/execution/clear_game.c \
 		srcs/parsing/map_parse.c srcs/parsing/parse_inits.c \
 		srcs/parsing/parsing.c main.c \
 
-OBJ = $(SRC:.c=.o)
 
+OBJSRCS = $(SRCS:.c=.o)
 
-all : $(LIBFT) $(NAME)
+$(NAME) : $(OBJSRCS)
+	@echo "\033[33m[Remove last version...]"
+	@rm -rf Cub3D
+	@echo "\033[33m[Libft compilation...]"
+	@$(MAKE) -C ./libft
+	@echo "\033[33m[Cub3D compilation...]"
+	@gcc  $(OBJSRCS) -I./includes -I./usr/include -Wall -Wextra -Werror $(MLX) ./libft/libft.a -o $(NAME)
+	@echo "\033[33m[Done !]"
 
-$(LIBFT):
-	make -C libft
+all : credit $(NAME)
 
-$(NAME): $(OBJ)
+clean :
+	rm -rf $(OBJSRCS)
+	$(MAKE) clean -C ./libft
+	$(MAKE) clean -C ./mlx
 
-	ar rcs $(NAME) $(OBJ) libft/*.o
-	$(CC) $(FLAG) $(LIBS) $(SRC) $(NAME) -o $(EXEC)
-	ranlib $(NAME)
+fclean : clean
+	$(MAKE) fclean -C ./libft
+	$(MAKE) clean -C ./mlx
+	rm -rf $(NAME)
+	rm -rf cub3d.bmp
 
-%.o: %.c
-	$(CC) $(CAFLAGS) -c $< -o $@
+re : fclean all
 
-clean:
-	rm -f $(OBJ)
-	make clean -C libft
-
-fclean: clean
-	rm -f $(NAME)
-	rm -f $(EXEC)
-	make fclean -C libft
-
-re: fclean all
+credit:
+	@echo ":::::::::     :::     ::::    ::: :::::::::      :::     "
+	@echo ":+:    :+:  :+: :+:   :+:+:   :+: :+:    :+:   :+: :+:   "
+	@echo "+:+    +:+ +:+   +:+  :+:+:+  +:+ +:+    +:+  +:+   +:+  "
+	@echo "+#++:++#+ +#++:++#++: +#+ +:+ +#+ +#+    +:+ +#++:++#++: "
+	@echo "+#+       +#+     +#+ +#+  +#+#+# +#+    +#+ +#+     +#+ "
+	@echo "#+#       #+#     #+# #+#   #+#+# #+#    #+# #+#     #+# "
+	@echo "###       ###     ### ###    #### #########  ###     ### "
