@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:05:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/20 12:35:05 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/20 16:53:40 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <math.h>
 # include <fcntl.h>
 
-// # include "mlx.h"
 
 int		ft_extention(char *path, char *ext);
 
