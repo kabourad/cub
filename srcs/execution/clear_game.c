@@ -12,7 +12,6 @@
 
 #include "../../headers/cub.h"
 
-
 static void	free_map(t_cub *cub)
 {
 	int		i;
@@ -26,7 +25,7 @@ static void	free_map(t_cub *cub)
 	free(cub->parse.map);
 }
 
-void	clear_game(t_cub *cub)
+void		clear_game(t_cub *cub)
 {
 	int		i;
 
@@ -39,7 +38,6 @@ void	clear_game(t_cub *cub)
 	cub->parse.sprites ? free(cub->parse.sprites) : 0;
 	if (cub->mlx)
 	{
-		// cub->image.img ? mlx_destroy_image(cub->mlx, cub->image.img) : 0;
 		i = 0;
 		while (i < 5)
 			cub->text[i].img ? mlx_destroy_image(cub->mlx, cub->text[i++].img) :

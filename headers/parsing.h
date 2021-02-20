@@ -26,39 +26,55 @@
 # define MP_ID		256
 # define PL_ID		512
 
-//fills.c
+/*
+**fills.c
+*/
 
 t_res		res_fill(char **array);
 t_rgb		color_fill(char *str, t_cub *cub);
 char		*path_fill(char *str, t_cub *cub);
 
-//id_extra.c
+/*
+**id_extra.c
+*/
 
 int			is_id(char *c, int ids);
 
-//id_parse.c
+/*
+**id_parse.c
+*/
 
 void		id_fill(int fd, t_cub *cub);
 
-//map_check_extra.c
+/*
+**map_check_extra.c
+*/
 
 int			is_valid(char c);
 
-//map_check.c
+/*
+**map_check.c
+*/
 
 void		space_check(t_mapll *tmp, char *line, int i, t_cub *cub);
 void		twod_check(t_mapll *tmp, char *line, int i, t_cub *cub);
 int			check_end(t_mapll *tmp, int n);
 
-//map_parse.c
+/*
+**map_parse.c
+*/
 
 void		map_fill(int fd, t_cub *cub);
 
-//parse_init.c
+/*
+**parse_init.c
+*/
 
 t_parse		stru_init(void);
 
-//parsing.c
+/*
+** parsing.c
+*/
 
 void		parsing(char *path, t_cub *cub);
 

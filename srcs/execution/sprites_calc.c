@@ -44,7 +44,7 @@ static void		sprite_sort(t_cub *cub)
 	int			j;
 
 	i = 0;
-	while ( i < cub->parse.spr_num)
+	while (i < cub->parse.spr_num)
 	{
 		j = i + 1;
 		while (j < cub->parse.spr_num)

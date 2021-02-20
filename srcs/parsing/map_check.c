@@ -74,7 +74,7 @@ void			twod_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 		quit("Trespassing in map.", NULL, cub);
 }
 
-int		check_end(t_mapll *tmp, int n)
+int				check_end(t_mapll *tmp, int n)
 {
 	int		i;
 

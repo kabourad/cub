@@ -198,5 +198,4 @@ typedef	struct		s_bitmap_image
 	unsigned int	clr_important;
 }					t_bitmap_image;
 
-
 #endif

@@ -3,7 +3,7 @@
 static void	text_put(t_cub *cub, t_sprite sprite, t_bin iter)
 {
 	int		index;
-	int 	index_sprite;
+	int		index_sprite;
 
 	index = iter.y * cub->image.size_line
 	+ iter.x * cub->image.bpp / 8;

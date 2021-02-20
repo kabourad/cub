@@ -26,7 +26,7 @@ void		ft_trace(t_cub *cub)
 	cub->cam.z_buff ? free(cub->cam.z_buff) : 0;
 }
 
-static int		main_cast(t_cub *cub)
+static int	main_cast(t_cub *cub)
 {
 	mlx_destroy_image(cub->mlx, cub->image.img);
 	mlx_clear_window(cub->mlx, cub->mlx_win);
@@ -35,7 +35,7 @@ static int		main_cast(t_cub *cub)
 	return (0);
 }
 
-int				ray_casting(t_cub *cub)
+int			ray_casting(t_cub *cub)
 {
 	cub->mlx = mlx_init();
 	cub->mlx_win = mlx_new_window(cub->mlx, cub->parse.res.w, cub->parse.res.h,
