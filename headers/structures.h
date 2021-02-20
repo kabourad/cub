@@ -88,6 +88,7 @@ typedef struct		s_mapll
 {
 	char			*line;
 	int				i;
+	int				n;
 	struct s_mapll	*next;
 }					t_mapll;
 

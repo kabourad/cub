@@ -52,13 +52,10 @@ static t_player	fill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
 
 void			space_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 {
-	if (tmp &&  tmp->line[i] && tmp->line[i] != '1' && tmp->line[i] != ' ')
-	{
-		printf("tmp->line[%d]: |%c| |%c|\n", tmp->line[i], line[i]);
-		quit("Error\nInvalid map 1", NULL, cub);
-	}
-	if (line[i + 1] != '1' && line[i + 1] != ' ' && line[i + 1] != '\0')
-		quit("Error\nInvalid map 2", NULL, cub);
+	if ((tmp && i < tmp->n && tmp->line[i] && tmp->line[i] != '1' &&
+			tmp->line[i] != ' ') || (line[i + 1] != '1' && line[i + 1] != ' ' &&
+			line[i + 1] != '\0'))
+		quit("There's a hole in the map.", NULL, cub);
 }
 
 void			twod_check(t_mapll *tmp, char *line, int i, t_cub *cub)
@@ -72,29 +69,24 @@ void			twod_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 	if (line[i] == '2')
 		cub->parse.spr_num++;
 	if ((tmp && tmp->line[i] != '1' && !is_valid(tmp->line[i])) ||
-			(line[i + 1] != '1' && !is_valid(line[i + 1])) || (is_valid(line[i]) && !i))
-		quit("Invalid map.", NULL, cub);
+			(line[i + 1] != '1' && !is_valid(line[i + 1])) ||
+			(is_valid(line[i]) && !i))
+		quit("Trespassing in map.", NULL, cub);
 }
 
-int				check_last_line(t_mapll *ptr)
+int		check_end(t_mapll *tmp, int n)
 {
-	t_mapll	*tmp;
-	t_mapll	*prv;
 	int		i;
 
-	i = 0;
-	tmp = ptr;
-	while (tmp->next)
+	if (tmp && n > 0)
 	{
-		prv = tmp;
-		tmp = tmp->next;
-	}
-	i = 0;
-	while (tmp->line[i])
-	{
-		if ((tmp->line[i] != '1' && tmp->line[i] != ' ') || (prv->line[i + 1] && !tmp->line[i + 1]))
-			return (1);
-		i++;
+		i = tmp->n - n;
+		while (tmp->line[i])
+		{
+			if (is_valid(tmp->line[i]))
+				return (1);
+			i++;
+		}
 	}
 	return (0);
 }

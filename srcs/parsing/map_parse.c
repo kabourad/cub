@@ -23,6 +23,7 @@ static t_mapll	*new_node(char *line, t_mapll *prv)
 	else
 		ret->i = 0;
 	ret->line = ft_strdup(line);
+	ret->n = ft_strlen(line);
 	return (ret);
 }
 
@@ -42,9 +43,11 @@ static void		check_store(char *line, t_cub *cub, t_mapll **map)
 		else if (is_valid(line[i]))
 			twod_check(tmp, line, i, cub);
 		else if (line[i] != '1')
-			quit("Error\nInvalid map", NULL, cub);
+			quit("Invalid map", NULL, cub);
 		i++;
 	}
+	tmp && check_end(tmp, tmp->n - ft_strlen(line)) ?
+			quit("Hole detected in the map.", NULL, cub) : 0;
 	if (tmp)
 		tmp->next = new_node(line, tmp);
 	else
@@ -129,7 +132,6 @@ void			map_fill(int fd, t_cub *cub)
 		line ? free(line) : 0;
 	}
 	line ? free(line) : 0;
-	check_last_line(map) ? quit("Invalid map.", NULL, cub) : 0;
 	cub->parse.map = map_convert(map);
 	cub->parse.sprites = sprite_fill(&(cub->parse));
 	cub->parse.ids |= MP_ID;

@@ -48,7 +48,7 @@ int			is_valid(char c);
 
 void		space_check(t_mapll *tmp, char *line, int i, t_cub *cub);
 void		twod_check(t_mapll *tmp, char *line, int i, t_cub *cub);
-int			check_last_line(t_mapll *ptr);
+int			check_end(t_mapll *tmp, int n);
 
 //map_parse.c
 
