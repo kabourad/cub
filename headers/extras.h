@@ -21,6 +21,6 @@ void		ft_arrdel(char ***arr);
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_listlen(t_mapll *map);
 char		**ft_split_whitespaces(char const *s);
-void		quit(char *msg, char *path, t_cub *cub);
+int			quit(char *msg, char *path, t_cub *cub);
 
 #endif

@@ -25,11 +25,12 @@ int		check_last_line(t_mapll *map)
 	t_mapll	*tmp;
 	int		i;
 
+	if (!map)
+		return (1);
 	tmp = map;
 	i = 0;
 	while (tmp && tmp->next)
 		tmp = tmp->next;
-	printf("%p %p %p %s\n", tmp, tmp->next, tmp->line, tmp->line);
 	while (tmp && tmp->line && tmp->line[i])
 	{
 		if (is_valid(tmp->line[i]))

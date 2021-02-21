@@ -134,9 +134,9 @@ void			map_fill(int fd, t_cub *cub)
 		line ? free(line) : 0;
 	}
 	line ? free(line) : 0;
+	!map ? quit("No map found", NULL, cub) : (cub->parse.ids |= MP_ID);
 	check_last_line(map) ? quit("Invalid last line", NULL, cub) : 0;
-	!(cub->parse.map = map_convert(map)) ? quit("No map found", NULL, cub) : 0;
+	cub->parse.map = map_convert(map);
 	cub->parse.sprites = sprite_fill(&(cub->parse));
-	cub->parse.ids |= MP_ID;
 	!(cub->parse.ids & PL_ID) ? quit("No player found.", NULL, cub) : 0;
 }
