@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:20:33 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/20 14:52:07 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/21 16:48:43 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ static void		check_store(char *line, t_cub *cub, t_mapll **map)
 	{
 		if (line[i] == ' ')
 			space_check(tmp, line, i, cub);
-		else if (is_valid(line[i]))
+		else if (is_valid(line[i]) && tmp)
 			twod_check(tmp, line, i, cub);
+		else if (is_valid(line[i]) && !tmp)
+			quit("There's a hole in the map", NULL, cub);
 		else if (line[i] != '1')
 			quit("Invalid map", NULL, cub);
 		i++;
@@ -120,6 +122,8 @@ void			map_fill(int fd, t_cub *cub)
 	map = NULL;
 	while ((n = get_next_line(fd, &line)) >= 0)
 	{
+		if (!n && (!line || (line && !line[0])))
+			break ;
 		if (line && line[0])
 			check_store(line, cub, &map);
 		else if ((!line || !line[0]) && map)
@@ -127,12 +131,11 @@ void			map_fill(int fd, t_cub *cub)
 			line ? free(line) : 0;
 			quit("The map shouldn't contain empty lines", NULL, cub);
 		}
-		if (!n)
-			break ;
 		line ? free(line) : 0;
 	}
 	line ? free(line) : 0;
-	cub->parse.map = map_convert(map);
+	check_last_line(map) ? quit("Invalid last line", NULL, cub) : 0;
+	!(cub->parse.map = map_convert(map)) ? quit("No map found", NULL, cub) : 0;
 	cub->parse.sprites = sprite_fill(&(cub->parse));
 	cub->parse.ids |= MP_ID;
 	!(cub->parse.ids & PL_ID) ? quit("No player found.", NULL, cub) : 0;

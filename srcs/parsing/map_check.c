@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 00:45:55 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/20 15:26:02 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/21 16:15:21 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_vec	fill_pos(int a, int b)
 	t_vec	ret;
 
 	ret.x = a + 0.5;
-	ret.y = b + 0.5;
+	ret.y = b + 1.5;
 	return (ret);
 }
 
@@ -26,7 +26,7 @@ static t_player	fill_player(t_parse *stru, t_mapll *tmp, char *line, int i)
 	t_player	ret;
 
 	stru->ids |= PL_ID;
-	ret.pos = fill_pos(i, tmp->i + 1);
+	ret.pos = fill_pos(i, tmp->i);
 	if (line[i] == 'N')
 	{
 		ret.pln.x = 0.66;
@@ -71,7 +71,7 @@ void			twod_check(t_mapll *tmp, char *line, int i, t_cub *cub)
 	if ((tmp && tmp->line[i] != '1' && !is_valid(tmp->line[i])) ||
 			(line[i + 1] != '1' && !is_valid(line[i + 1])) ||
 			(is_valid(line[i]) && !i))
-		quit("Trespassing in map.", NULL, cub);
+		quit("Invalid map.", NULL, cub);
 }
 
 int				check_end(t_mapll *tmp, int n)

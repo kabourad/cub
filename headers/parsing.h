@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:42:30 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/20 16:52:49 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/21 15:36:29 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void		id_fill(int fd, t_cub *cub);
 */
 
 int			is_valid(char c);
+int			check_last_line(t_mapll *map);
 
 /*
 **map_check.c

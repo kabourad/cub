@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 14:52:17 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/20 14:52:18 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/21 16:42:47 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,23 @@ int		is_valid(char c)
 		return (1);
 	else
 		return (0);
+}
+
+int		check_last_line(t_mapll *map)
+{
+	t_mapll	*tmp;
+	int		i;
+
+	tmp = map;
+	i = 0;
+	while (tmp && tmp->next)
+		tmp = tmp->next;
+	printf("%p %p %p %s\n", tmp, tmp->next, tmp->line, tmp->line);
+	while (tmp && tmp->line && tmp->line[i])
+	{
+		if (is_valid(tmp->line[i]))
+			return (1);
+		i++;
+	}
+	return (0);
 }
