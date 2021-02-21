@@ -27,8 +27,10 @@ void	rotate(t_cub *cub, double rot_spd)
 
 void	move(t_cub *cub, t_vec pos, t_vec vec, double mov_spd)
 {
-	if (is_valid(cub->parse.map[(int)pos.y][(int)(pos.x + vec.x * mov_spd)]))
+	if (is_valid(cub->parse.map[(int)pos.y][(int)(pos.x + vec.x * mov_spd)]) &&
+			cub->parse.map[(int)pos.y][(int)(pos.x + vec.x * mov_spd)] != '2')
 		cub->parse.ply.pos.x += vec.x * mov_spd;
-	if (is_valid(cub->parse.map[(int)(pos.y + vec.y * mov_spd)][(int)pos.x]))
+	if (is_valid(cub->parse.map[(int)(pos.y + vec.y * mov_spd)][(int)pos.x]) &&
+			cub->parse.map[(int)(pos.y + vec.y * mov_spd)][(int)pos.x] != '2')
 		cub->parse.ply.pos.y += vec.y * mov_spd;
 }
