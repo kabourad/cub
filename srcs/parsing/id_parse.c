@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 19:06:31 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/20 14:52:23 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:27:07 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	identifier_fill(int id, char **array, t_cub *cub)
 {
 	if (id == R_ID)
-		cub->parse.res = res_fill(array);
+		cub->parse.res = res_fill(array, cub);
 	else if (id == F_ID)
 		cub->parse.floor = color_fill(array[1], cub);
 	else if (id == C_ID)

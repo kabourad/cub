@@ -6,7 +6,7 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 18:42:30 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/21 15:36:29 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:26:56 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 **fills.c
 */
 
-t_res		res_fill(char **array);
+t_res		res_fill(char **array, t_cub *cub);
 t_rgb		color_fill(char *str, t_cub *cub);
 char		*path_fill(char *str, t_cub *cub);
 

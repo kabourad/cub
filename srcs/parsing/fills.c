@@ -6,28 +6,30 @@
 /*   By: kabourad <kabourad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 22:49:51 by kabourad          #+#    #+#             */
-/*   Updated: 2021/02/20 14:11:53 by kabourad         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:58:35 by kabourad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/cub.h"
 
-t_res	res_fill(char **array)
+t_res	res_fill(char **array, t_cub *cub)
 {
 	t_res	ret;
 
 	ret.w = ft_atoi(array[1]);
 	ret.h = ft_atoi(array[2]);
-	if (ret.w > 2560 || ret.w < 0)
+	if (ret.w > 2560)
 	{
 		ret.w = 2560;
 		ret.h = 1440;
 	}
-	if (ret.h > 1440 || ret.h < 0)
+	if (ret.h > 1440)
 	{
 		ret.w = 2560;
 		ret.h = 1440;
 	}
+	if (ret.w < 0 || ret.h < 0)
+		quit("Negative resolution.", NULL, cub);
 	return (ret);
 }
 
